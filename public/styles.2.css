@@ -1,0 +1,299 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1em 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1em;
+}
+
+.nav-links li {
+    margin: 0;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5em 1em;
+    transition: background-color 0.3s;
+}
+
+.nav-links a:hover {
+    background-color: #555;
+    border-radius: 5px;
+}
+
+.btn {
+    background-color: #007bff;
+    color: #fff;
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background: url('hero-background.jpg') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+    padding-top: 5em;
+}
+
+.hero-content {
+    max-width: 600px;
+    animation: fadeInUp 2s ease-out;
+}
+
+.hero h1 {
+    font-size: 3em;
+    margin: 0;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin: 1em 0;
+}
+
+/* Features Section */
+.features {
+    background-color: #fff;
+    padding: 4em 2em;
+    text-align: center;
+}
+
+.features h2 {
+    font-size: 2.5em;
+    margin-bottom: 1em;
+}
+
+.feature-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2em;
+}
+
+.card {
+    background-color: #f4f4f4;
+    padding: 2em;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    width: 250px;
+    transition: transform 0.3s;
+}
+
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card h3 {
+    margin-top: 0;
+}
+
+/* About Section */
+.about {
+    padding: 4em 2em;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+.about h2 {
+    font-size: 2.5em;
+    margin-bottom: 1em;
+}
+
+/* Contact Section */
+.contact {
+    padding: 4em 2em;
+    text-align: center;
+}
+
+.contact h2 {
+    font-size: 2.5em;
+    margin-bottom: 1em;
+}
+
+.contact p {
+    font-size: 1.2em;
+    margin-bottom: 1em;
+}
+
+/* Dashboard Section */
+.dashboard {
+    padding: 6em 2em;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.dashboard h1 {
+    font-size: 2.5em;
+    margin-bottom: 1em;
+}
+
+.overview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2em;
+    justify-content: center;
+}
+
+
+
+.gcard {
+    background-color: #fff;
+    padding: 2em;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    width: 700px;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+
+
+.progress-bar {
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 1em;
+    height: 20px;
+}
+
+.progress {
+    background-color: #28a745;
+    height: 100%;
+    transition: width 0.3s;
+}
+
+
+
+.quick-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2em;
+    justify-content: center;
+    margin-top: 2em;
+}
+
+.quick-links .card {
+    width: auto;
+    padding: 1em 2em;
+    text-align: center;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1em 0;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.goal-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Divide into columns */
+    gap: 20px; /* Add gap between columns */
+}
+
+.goal-item {
+    /*width: 100%;*/ 
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.goal-header {
+    grid-column: 1 / -1; /* Span the header across all columns */
+}
+
+.investments-loans {
+    display: flex; /* Use flexbox for investments and loans */
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    gap: 20px; /* Add gap between items */
+}
+
+.investment-item,
+.loan-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 5px;
+    width: calc(33.333% - 30px); /* Set width to a third of the container, adjust as needed */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+.card {
+    width: 300px; /* Adjust width as needed */
+    height: 400px; /* Set a fixed height */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 2em;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.chart-container {
+    flex-grow: 1; /* Allow the chart container to grow and fill available space */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+canvas {
+    max-width: 100%;
+    max-height: 100%;
+}

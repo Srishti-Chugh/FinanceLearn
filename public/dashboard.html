@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Financial Learning for All</title>
+    <link rel="stylesheet" href="styles.2.css">
+    <style>
+        /* Sidebar styling */
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+            z-index: 1000;
+        }
+
+        .sidebar a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            color: #f1f1f1;
+        }
+
+        .sidebar .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        .openbtn {
+            font-size: 20px;
+            cursor: pointer;
+            background-color: #111;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            text-align: center;
+        }
+
+        .openbtn:hover {
+            background-color: #444;
+        }
+        
+        /* Push content to the right when sidebar opens */
+        #main {
+            transition: margin-left .5s;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <button class="openbtn" onclick="openNav()">☰</button>
+            <div class="logo">FinanceLearn</div>
+            <ul class="nav-links">
+                <li><a href="reviews.html">Reviews</a></li>
+                <li><a href="">Resources</a></li>
+                <li><a href="logout.html" class="btn">Log Out</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="monthly_budget.html">Budget</a>
+        <a href="">Goals</a>
+        <a href="invest.html">Investments</a>
+        <a href="loan.html">Loans</a>
+        <a href="insurance.html">Insurance</a>
+    </div>
+
+    <div id="main">
+        <main class="dashboard">
+            <h1>Welcome, <span id="userEmail"></span></h1>
+            <div class="overview">
+                
+
+                <div class="gcard">
+                    <h3>Financial Goals</h3>
+                    <div id="goalList"></div>
+                </div>
+
+                <div class="card">
+                    <h3>Investment Portfolio</h3>
+                    <div class="chart-container">
+                        <canvas id="investmentChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 FinanceLearn. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Set user email from session storage
+        document.getElementById('userEmail').textContent = sessionStorage.getItem('username');
+
+
+      
+        // Fetch and render financial goals
+        /*async function fetchFinancialGoals() {
+            const email = sessionStorage.getItem('username');
+            try {
+                const response = await fetch(`/goals/${email}`);
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.message || 'Failed to fetch goals');
+                }
+
+                const goalList = document.getElementById('goalList');
+                goalList.innerHTML = ''; // Clear previous content
+
+                data.forEach(goal => {
+                    const goalElement = document.createElement('div');
+                    goalElement.classList.add('goal-item');
+                    goalElement.innerHTML = `
+                        <h4>${goal.goals} Goal</h4>
+                    `;
+                    goalList.appendChild(goalElement);
+                });
+            } catch (error) {
+                console.error('Error fetching financial goals:', error);
+            }
+        }*/
+
+        // Fetch and render financial goals
+async function fetchFinancialGoals() {
+    const email = sessionStorage.getItem('username');
+    if (!email) {
+        console.error('No username found in session storage');
+        return;
+    }
+
+    try {
+        const response = await fetch(`/goals/${email}`);
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.message || 'Failed to fetch goals');
+        }
+        console.log(data); // Log the received data to verify
+        renderGoals(data);
+    } catch (error) {
+        console.error('Error fetching financial goals:', error);
+    }
+}
+
+function renderGoals(goals) {
+    const goalList = document.getElementById('goalList');
+    goalList.innerHTML = ''; // Clear previous content
+
+    goals.forEach(goal => {
+        const goalElement = document.createElement('div');
+        goalElement.classList.add('goal-item');
+        goalElement.innerHTML = `
+            <h4 class="goal-header">${goal.goals} Goal</h4>
+            <div class="investments-loans">
+                ${renderInvestments(goal.investments)}
+                ${renderLoans(goal.loans)}
+            </div>
+        `;
+        goalList.appendChild(goalElement);
+    });
+}
+
+function renderInvestments(investments) {
+    if (!investments || investments.length === 0) {
+        return '';
+    }
+    const investmentHTML = investments.map(investment => `
+        <div class="investment-item">
+            <p><strong>Investment Type:</strong> ${investment.type}</p>
+            <p><strong>Investment Scheme:</strong> ${investment.scheme}</p>
+            <p><strong>Investment Amount:</strong> ${investment.amount}</p>
+            <p><strong>Investment Duration:</strong> ${investment.duration}</p>
+        </div>
+    `).join('');
+
+    return investmentHTML;
+}
+
+function renderLoans(loans) {
+    if (!loans || loans.length === 0) {
+        return '';
+    }
+    const loanHTML = loans.map(loan => `
+        <div class="loan-item">
+            <p><strong>Loan Amount:</strong> ${loan.amount}</p>
+            <p><strong>Loan Rate:</strong> ${loan.rate}</p>
+            <p><strong>Loan Duration:</strong> ${loan.duration}</p>
+            
+        </div>
+    `).join('');
+
+    return loanHTML;
+}
+
+
+
+        // Fetch and render investment data
+        async function fetchInvestmentData() {
+            const email = sessionStorage.getItem('username');
+            try {
+                const response = await fetch(`/investments/${email}`);
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.message || 'Failed to fetch investments');
+                }
+
+                // Aggregate investment data by type
+                const investmentData = data.reduce((acc, investment) => {
+                    acc[investment.investmentType] = (acc[investment.investmentType] || 0) + investment.investmentAmount;
+                    return acc;
+                }, {});
+
+                // Prepare data for chart
+                const labels = Object.keys(investmentData);
+                const amounts = Object.values(investmentData);
+
+                // Update investment chart
+                const ctx = document.getElementById('investmentChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            data: amounts,
+                            backgroundColor: ['#007bff', '#28a745', '#ffc107', '#dc3545', '#17a2b8', '#6c757d', '#fd7e14', '#343a40']
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false
+                    }
+                });
+            } catch (error) {
+                console.error('Error fetching investment data:', error);
+            }
+        }
+
+        fetchInvestmentData();
+        fetchFinancialGoals();
+
+        // Functions to open and close the sidebar
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+        }
+    </script>
+</body>
+</html>

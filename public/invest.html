@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Investment Tracker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Investment tracking form">
+    <meta name="author" content="Your Name">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="invest_styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <h1 class="text-center">Investment Tracker</h1>
+    <section class="hero-section">
+        <div class="hero-text">
+            <h1>Welcome to Your Investment Guide</h1>
+            <p>Learn the best investment strategies and tips to maximize your financial growth. Understand your risk tolerance and make informed decisions to secure your financial future.</p>
+        </div>
+        <div class="hero-image">
+            <img src="investment_pic.png" alt="Investment Image">
+        </div>
+    </section>
+    
+    <h2>Investment Tips for All Users</h2>
+    <div class="tips-section">
+        <div class="tip-item">
+            <div class="circle">1</div>
+            <div class="tip-text">
+                <h5>Start Early</h5>
+                <p>The sooner you start investing, the more time your money has to grow through the power of compounding. Even small amounts invested regularly can grow significantly over time.</p>
+            </div>
+        </div>
+        <div class="tip-item">
+            <div class="circle">2</div>
+            <div class="tip-text">
+                <h5>Diversify Your Portfolio</h5>
+                <p>Don’t put all your eggs in one basket. Spread your investments across different asset classes (stocks, bonds, real estate, etc.) to reduce risk and improve potential returns.</p>
+            </div>
+        </div>
+        <div class="tip-item">
+            <div class="circle">3</div>
+            <div class="tip-text">
+                <h5>Understand Your Investments</h5>
+                <p>Make sure you understand what you are investing in. Research and educate yourself about different investment options, their risks, and potential returns.</p>
+            </div>
+        </div>
+        <div class="tip-item">
+            <div class="circle">4</div>
+            <div class="tip-text">
+                <h5>Invest Regularly</h5>
+                <p>Consider setting up automatic contributions to your investment accounts. Regular, consistent investing can help you build wealth over time and reduce the impact of market volatility.</p>
+            </div>
+        </div>
+        <div class="tip-item">
+            <div class="circle">5</div>
+            <div class="tip-text">
+                <h5>Stay Informed</h5>
+                <p>Keep up with market trends, economic news, and changes in financial regulations. Staying informed can help you make better investment decisions.</p>
+            </div>
+        </div>
+        <div class="tip-item">
+            <div class="circle">6</div>
+            <div class="tip-text">
+                <h5>Rebalance Your Portfolio</h5>
+                <p>Periodically review and adjust your portfolio to ensure it aligns with your investment goals and risk tolerance. Rebalancing helps maintain your desired asset allocation.</p>
+            </div>
+        </div>
+        <div class="tip-item">
+            <div class="circle">7</div>
+            <div class="tip-text">
+                <h5>Keep Emotions in Check</h5>
+                <p>Investing can be emotional, especially during market fluctuations. Stay calm and avoid making impulsive decisions based on short-term market movements.</p>
+            </div>
+        </div>
+        <div class="tip-item">
+            <div class="circle">8</div>
+            <div class="tip-text">
+                <h5>Have a Long-Term Perspective</h5>
+                <p>Investing is a long-term endeavor. Focus on your long-term goals rather than short-term market volatility. Patience and discipline are key to successful investing.</p>
+            </div>
+        </div>
+        <div class="tip-item">
+            <div class="circle">9</div>
+            <div class="tip-text">
+                <h5>Consider Your Financial Goals</h5>
+                <p>Your investment strategy should align with your financial goals, whether it’s saving for retirement, buying a home, or funding your child’s education. Set clear goals and invest accordingly.</p>
+            </div>
+        </div>
+        <div class="tip-item">
+            <div class="circle">10</div>
+            <div class="tip-text">
+                <h5>Understand Risk and Return</h5>
+                <p>Higher returns often come with higher risks. Make sure you understand the risk associated with each investment and choose investments that match your risk tolerance.</p>
+            </div>
+        </div>
+        <div class="tip-item">
+            <div class="circle">11</div>
+            <div class="tip-text">
+                <h5>Keep Costs Low</h5>
+                <p>Be mindful of fees and expenses associated with your investments. High fees can eat into your returns over time. Look for low-cost investment options where possible.</p>
+            </div>
+        </div>
+        <div class="tip-item">
+            <div class="circle">12</div>
+            <div class="tip-text">
+                <h5>Seek Professional Advice</h5>
+                <p>If you’re unsure about your investment decisions, consider seeking advice from a financial advisor. A professional can help you create a personalized investment plan based on your goals and risk tolerance.</p>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <h2>Know Your Risk Tolerance</h2>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Low-Risk Profile</h5>
+                <p class="card-text">
+                  If you prefer stability and prioritize the safety of your investments, especially if you have limited monthly income and/or significant ongoing debts. You may have a conservative risk tolerance, preferring investments with lower volatility to protect your capital.
+                </p>
+                <p>Recommended Investments:</p>
+                <ul>
+                  <li>Bonds</li>
+                  <li>Fixed-income securities</li>
+                  <li>Savings accounts</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Medium-Risk Profile</h5>
+                <p class="card-text">
+                  If you are comfortable with moderate fluctuations in the value of your investments and can manage your ongoing debts while maintaining a stable monthly income. You may have a moderate risk tolerance, seeking a balance between capital preservation and growth potential.
+                </p>
+                <p>Recommended Investments:</p>
+                <ul>
+                  <li>Diversified mix of stocks and bonds</li>
+                  <li>Diversified mutual funds</li>
+                  <li>Index funds</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">High-Risk Profile</h5>
+                <p class="card-text">
+                  If you have a stable monthly income, minimal ongoing debts, and a longer investment time horizon, allowing you to tolerate higher levels of risk and volatility. You may have an aggressive risk tolerance, seeking higher returns over the long term and willing to accept short-term market fluctuations.
+                </p>
+                <p>Recommended Investments:</p>
+                <ul>
+                  <li>Individual stocks</li>
+                  <li>Growth-oriented mutual funds</li>
+                  <li>Alternative investments like real estate and commodities</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="row">
+    <div class="col-md-6">
+        <!-- Left half with text for user -->
+        <div>
+            <h2>Investment Guidelines</h2>
+            <p>For low risk levels, generally, a return below 7% is satisfied. It's recommended to consider investments like savings accounts, fixed deposits, or government bonds.</p>
+            <p>For medium risk levels, aim for a return between 7% to 12%. Diversified mutual funds and balanced portfolios are suitable options.</p>
+            <p>For high risk levels, target a return above 12%. Consider investments in stocks, cryptocurrency, or aggressive growth mutual funds.</p>
+            <!-- Add more guidelines as needed -->
+        </div>
+    </div>
+    <div class="col-md-6">
+    <form id="suggestionForm">
+        <div class="form-group">
+            <label for="investmentAmount">Investment Amount</label>
+            <input type="number" id="investmentAmount" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="expectedReturn">Expected Return (%)</label>
+            <input type="number" id="expectedReturn" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="investmentDuration">Investment Duration</label>
+            <select id="investmentDuration" class="form-control" required>
+                <option value="shortTerm">Short Term</option>
+                <option value="mediumTerm">Medium Term</option>
+                <option value="longTerm">Long Term</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="riskLevel">Risk Level</label>
+            <select id="riskLevel" class="form-control" required>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="taxStatus">Tax Status</label>
+            <select id="taxStatus" class="form-control" required>
+                <option value="single">Single</option>
+                <option value="marriedJointly">Married Filing Jointly</option>
+                <option value="marriedSeparately">Married Filing Separately</option>
+                <option value="headOfHousehold">Head of Household</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Get Investment Suggestions</button>
+    </form>
+    </div>
+    </div>
+    
+    <!-- Display area for investment suggestions and tax details -->
+    <div id="investmentSuggestions" style="display: none;">
+        <h2>Investment Suggestions</h2>
+        <p>Suggested Investment Types: <span id="suggestedInvestmentTypes"></span></p>
+        <div id="taxInfo">
+            <h3>Estimated Tax Liabilities</h2>
+                <p id="shortTermTax"></p>
+                <p id="mediumTermTax"></p>
+                <p id="longTermTax"></p>
+                <p id="totalTax"></p>
+                <h3>Tax-Saving Strategies</h3>
+                <ul id="taxSavingStrategies"></ul>
+                <h3>Additional Tax Information</h2>
+                <p id="effectiveTaxRate"></p>
+                <p id="afterTaxReturn"></p>
+                <p id="taxComparison"></p>
+                <p id="taxRefundOrOwed"></p>
+        </div>
+    </div>
+    <div class="container">
+        <form id="investmentForm" class="form-horizontal">
+            <div class="form-group">
+                <label for="investmentPurpose" class="col-sm-2 control-label">Investment Purpose</label>
+                <div class="col-sm-10">
+                    <div id="investmentPurpose">
+                        <select id="investmentPurposeDropdown" class="form-control" onchange="checkOtherOption(this)">
+                            <option value="retirement">Retirement</option>
+                            <option value="education">Education</option>
+                            <option value="house">House</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <input type="text" id="otherPurpose" class="form-control" placeholder="Enter Purpose" style="display: none;">
+                        <input type="hidden" id="investmentPurposeFinal" name="investmentPurposeFinal">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="investmentType" class="col-sm-2 control-label">Investment Type</label>
+                <div class="col-sm-10">
+                    <select id="investmentType" class="form-control">
+                        <option value="">Select Investment Type</option>
+                        <option value="stocks">Stocks</option>
+                        <option value="bonds">Bonds</option>
+                        <option value="mutualFunds">Mutual Funds</option>
+                        <option value="realEstate">Real Estate</option>
+                        <option value="cryptocurrencies">Cryptocurrencies</option>
+                        <option value="etfs">ETFs</option>
+                        <option value="fixedDeposits">Fixed Deposits</option>
+                        <option value="gold">Gold</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="investmentScheme" class="col-sm-2 control-label">Investment Scheme/Name</label>
+                <div class="col-sm-10">
+                    <input type="text" id="investmentScheme" class="form-control" placeholder="Enter Scheme/Name">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="investmentAmount" class="col-sm-2 control-label">Investment Amount</label>
+                <div class="col-sm-10">
+                    <input type="number" id="investmentAmount" class="form-control" placeholder="Enter Amount">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="investmentDate" class="col-sm-2 control-label">Investment Date</label>
+                <div class="col-sm-10">
+                    <input type="date" id="investmentDate" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="investmentDuration" class="col-sm-2 control-label">Investment Duration</label>
+                <div class="col-sm-10">
+                    <select id="investmentDuration" class="form-control">
+                        <option value="">Select Duration</option>
+                        <option value="shortTerm">Short-term (Less than 1 year)</option>
+                        <option value="mediumTerm">Medium-term (1-3 years)</option>
+                        <option value="longTerm">Long-term (More than 3 years)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="riskLevel" class="col-sm-2 control-label">Risk Level</label>
+                <div class="col-sm-10">
+                    <select id="riskLevel" class="form-control">
+                        <option value="">Select Risk Level</option>
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="taxStatus" class="col-sm-2 control-label">Tax Status</label>
+                <div class="col-sm-10">
+                    <select id="taxStatus" class="form-control">
+                        <option value="">Select Tax Status</option>
+                        <option value="single">Single</option>
+                        <option value="marriedJointly">Married Filing Jointly</option>
+                        <option value="marriedSeparately">Married Filing Separately</option>
+                        <option value="headOfHousehold">Head of Household</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="expectedReturn" class="col-sm-2 control-label">Expected Return (%)</label>
+                <div class="col-sm-10">
+                    <input type="number" id="expectedReturn" class="form-control" placeholder="Enter Expected Return">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="additionalNotes" class="col-sm-2 control-label">Additional Notes</label>
+                <div class="col-sm-10">
+                    <textarea id="additionalNotes" class="form-control" placeholder="Enter any additional notes"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+        
+    </div>
+
+    <script>
+
+        // Function to calculate and display tax liabilities
+        function calculateAndDisplayTaxLiabilities(investmentData) {
+            const investmentAmount = parseFloat(investmentData.investmentAmount);
+            const expectedReturn = parseFloat(investmentData.expectedReturn);
+            const investmentDuration = investmentData.investmentDuration;
+            const taxStatus = investmentData.taxStatus;
+    
+            let shortTermTaxRate, longTermTaxRate, mediumTermTaxRate;
+    
+            // Determine appropriate tax rates based on tax status and holding period
+            if (taxStatus === 'single') {
+                shortTermTaxRate = 0.22; // Example short-term tax rate for single filers
+                longTermTaxRate = 0.15; // Example long-term tax rate for single filers
+            } else if (taxStatus === 'marriedJointly') {
+                shortTermTaxRate = 0.20; // Example short-term tax rate for married filing jointly
+                longTermTaxRate = 0.10; // Example long-term tax rate for married filing jointly
+            } else if (taxStatus === 'marriedSeparately') {
+                shortTermTaxRate = 0.24; // Example short-term tax rate for married filing separately
+                longTermTaxRate = 0.12; // Example long-term tax rate for married filing separately
+            } else if (taxStatus === 'headOfHousehold') {
+                shortTermTaxRate = 0.18; // Example short-term tax rate for head of household
+                longTermTaxRate = 0.12; // Example long-term tax rate for head of household
+            } // Add more conditions for other tax statuses
+    
+            let shortTermGainsTax = 0;
+            let longTermGainsTax = 0;
+            let mediumTermGainsTax = 0;
+    
+            // Calculate short-term and long-term gains tax based on holding period
+            if (investmentDuration === 'shortTerm') {
+                shortTermGainsTax = (investmentAmount * expectedReturn / 100) * shortTermTaxRate;
+            } else if (investmentDuration === 'longTerm') {
+                longTermGainsTax = (investmentAmount * expectedReturn / 100) * longTermTaxRate;
+            } else if (investmentDuration === 'mediumTerm') {
+                // For medium-term, you can use a different tax rate or provide specific tax-saving strategies
+                // Example: Assume a flat tax rate for medium-term gains
+                const mediumTermTaxRate = 0.18; // Example tax rate for medium-term gains
+                mediumTermGainsTax = (investmentAmount * expectedReturn / 100) * mediumTermTaxRate;
+            }
+    
+            const totalTaxLiabilities = shortTermGainsTax + longTermGainsTax + mediumTermGainsTax;
+            // Calculate effective tax rate
+            const effectiveTaxRate = totalTaxLiabilities / investmentAmount;
+
+            // Calculate after-tax return
+            const afterTaxReturn = expectedReturn - (totalTaxLiabilities / investmentAmount * 100);
+
+            // Comparison of tax impact based on different investment durations
+            let taxComparison = '';
+            if (shortTermGainsTax < longTermGainsTax && shortTermGainsTax < mediumTermGainsTax) {
+                taxComparison = 'Short-term investments have the lowest tax impact.';
+            } else if (longTermGainsTax < shortTermGainsTax && longTermGainsTax < mediumTermGainsTax) {
+                taxComparison = 'Long-term investments have the lowest tax impact.';
+            } else {
+                taxComparison = 'Medium-term investments have the lowest tax impact.';
+            }
+
+            // Estimate tax refund or amount owed
+            let taxRefundOrOwed = '';
+            // Example logic to estimate tax refund or amount owed based on total tax liabilities
+            const estimatedTaxPayment = 1000; // Example estimated tax payment
+            if (totalTaxLiabilities > estimatedTaxPayment) {
+                const amountOwed = totalTaxLiabilities - estimatedTaxPayment;
+                taxRefundOrOwed = `You may owe an additional $${amountOwed.toFixed(2)} in taxes.`;
+            } else if (totalTaxLiabilities < estimatedTaxPayment) {
+                const refundAmount = estimatedTaxPayment - totalTaxLiabilities;
+                taxRefundOrOwed = `You may receive a tax refund of $${refundAmount.toFixed(2)}.`;
+            } else {
+                taxRefundOrOwed = 'Your tax liability matches your estimated tax payment.';
+            }
+    
+            // Display the estimated tax liabilities to the user
+            document.getElementById('taxInfo').style.display = 'block';
+            document.getElementById('shortTermTax').textContent = `Estimated short-term capital gains tax: $${shortTermGainsTax.toFixed(2)}`;
+            document.getElementById('mediumTermTax').textContent = `Estimated medium-term capital gains tax: $${mediumTermGainsTax.toFixed(2)}`; // Add this line
+            document.getElementById('longTermTax').textContent = `Estimated long-term capital gains tax: $${longTermGainsTax.toFixed(2)}`;
+            document.getElementById('totalTax').textContent = `Total estimated tax liabilities: $${totalTaxLiabilities.toFixed(2)}`;
+            
+            // Display additional personalized tax information
+            document.getElementById('effectiveTaxRate').textContent = `Effective tax rate: ${(effectiveTaxRate * 100).toFixed(2)}%`;
+            document.getElementById('afterTaxReturn').textContent = `After-tax return: ${(afterTaxReturn).toFixed(2)}%`;
+            document.getElementById('taxComparison').textContent = taxComparison;
+            document.getElementById('taxRefundOrOwed').textContent = taxRefundOrOwed;
+
+            // Display tax-saving strategies
+            const taxSavingStrats = document.getElementById('taxSavingStrategies');
+            taxSavingStrats.innerHTML = ''; // Clear existing strategies
+    
+            if (investmentDuration === 'shortTerm' || investmentDuration === 'mediumTerm') {
+                const longTermStrategy = document.createElement('li');
+                longTermStrategy.textContent = 'Consider holding investments for longer periods to qualify for lower long-term capital gains tax rates.';
+                taxSavingStrats.appendChild(longTermStrategy);
+            }
+    
+            const taxAdvantagedAccounts = document.createElement('li');
+            taxAdvantagedAccounts.textContent = 'Consider investing in tax-advantaged accounts like IRAs or 401(k)s to minimize your tax burden.';
+            taxSavingStrats.appendChild(taxAdvantagedAccounts);
+        }
+        document.getElementById('suggestionForm').addEventListener('submit', async function(event) {
+    event.preventDefault();
+
+    // Retrieve form data
+    const investmentAmount = parseFloat(document.getElementById('investmentAmount').value);
+    const expectedReturn = parseFloat(document.getElementById('expectedReturn').value);
+    const investmentDuration = document.getElementById('investmentDuration').value;
+    const riskLevel = document.getElementById('riskLevel').value;
+    const taxStatus = document.getElementById('taxStatus').value;
+
+    // Define suggested investment types based on user inputs
+let suggestedInvestmentTypes = [];
+
+// Check for low risk
+if (riskLevel === "low") {
+    if (investmentDuration === "shortTerm") {
+        if (expectedReturn <= 5) {
+            suggestedInvestmentTypes.push("Savings accounts");
+        }
+    } else if (investmentDuration === "mediumTerm") {
+        if (expectedReturn <= 6) {
+            suggestedInvestmentTypes.push("Fixed deposits");
+        }
+    } else if (investmentDuration === "longTerm") {
+        if (expectedReturn <= 7) {
+            suggestedInvestmentTypes.push("Government bonds");
+        }
+    }
+}
+
+// Check for medium risk
+if (riskLevel === "medium") {
+    if (investmentDuration === "shortTerm") {
+        if (expectedReturn < 8) {
+            suggestedInvestmentTypes.push("Diversified mutual funds");
+        }
+    } else if (investmentDuration === "mediumTerm") {
+        if (expectedReturn < 10) {
+            suggestedInvestmentTypes.push("Balanced portfolios");
+        }
+    } else if (investmentDuration === "longTerm") {
+        if (expectedReturn < 12) {
+            suggestedInvestmentTypes.push("Diversified mutual funds", "Balanced portfolios");
+        }
+    }
+}
+
+// Check for high risk
+if (riskLevel === "high") {
+    if (investmentDuration === "shortTerm") {
+        if (expectedReturn < 15) {
+            if (taxStatus === "single") {
+                suggestedInvestmentTypes.push("Stocks", "Cryptocurrency");
+            } else {
+                suggestedInvestmentTypes.push("Aggressive growth mutual funds", "Cryptocurrency");
+            }
+        }
+    } else if (investmentDuration === "mediumTerm") {
+        if (expectedReturn < 18) {
+            if (taxStatus === "single") {
+                suggestedInvestmentTypes.push("Stocks", "Cryptocurrency");
+            } else {
+                suggestedInvestmentTypes.push("Aggressive growth mutual funds", "Cryptocurrency");
+            }
+        }
+    } else if (investmentDuration === "longTerm") {
+        if (expectedReturn < 20) {
+            if (taxStatus === "single") {
+                suggestedInvestmentTypes.push("Stocks", "Cryptocurrency");
+            } else {
+                suggestedInvestmentTypes.push("Aggressive growth mutual funds", "Cryptocurrency");
+            }
+        }
+    }
+}
+
+// Generate suggestions based on user inputs
+if (suggestedInvestmentTypes.length === 0) {
+    console.log("Please provide valid inputs.");
+} else {
+    console.log(`For your risk level (${riskLevel}), investment duration (${investmentDuration}), and expected return (${expectedReturn}%), consider investing in: ${suggestedInvestmentTypes.join(", ")}.`);
+}
+    
+
+    
+
+    // Display investment suggestions
+    document.getElementById('suggestedInvestmentTypes').textContent = suggestedInvestmentTypes.join(', ');
+    document.getElementById('investmentSuggestions').style.display = 'block';
+
+    // Prepare data for tax calculation
+    const investmentData = {
+        investmentAmount,
+        expectedReturn,
+        investmentDuration,
+        riskLevel,
+        taxStatus
+    };
+
+    // Calculate and display tax liabilities
+    calculateAndDisplayTaxLiabilities(investmentData);
+});
+
+        // Function to handle the 'other' option in the purpose dropdown
+        function checkOtherOption(selectElement) {
+            const otherInput = document.getElementById('otherPurpose');
+            const finalPurpose = document.getElementById('investmentPurposeFinal');
+    
+            if (selectElement.value === 'other') {
+                otherInput.style.display = 'block';
+                finalPurpose.value = '';
+                selectElement.style.display = 'none';
+            } else {
+                otherInput.style.display = 'none';
+                selectElement.style.display = 'block';
+                finalPurpose.value = selectElement.value;
+            }
+        }
+    
+        // Event listener to update the final purpose field when 'other' purpose is selected
+        document.getElementById('otherPurpose').addEventListener('input', function() {
+            const finalPurpose = document.getElementById('investmentPurposeFinal');
+            finalPurpose.value = this.value.trim();
+        });
+    
+        // Event listener to ensure the final purpose field is populated when the dropdown value changes
+        document.getElementById('investmentPurposeDropdown').addEventListener('change', function() {
+            const finalPurpose = document.getElementById('investmentPurposeFinal');
+            if (this.value !== 'other') {
+                finalPurpose.value = this.value;
+            }
+        });
+    
+        // Event listener for form submission
+        document.getElementById('investmentForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+    
+            const selectElement = document.getElementById('investmentPurposeDropdown');
+            const otherInput = document.getElementById('otherPurpose');
+            const finalPurpose = document.getElementById('investmentPurposeFinal');
+    
+            // Ensure the final purpose field is populated based on current selection
+            if (selectElement.style.display === 'none') {
+                finalPurpose.value = otherInput.value.trim();
+            } else {
+                finalPurpose.value = selectElement.value;
+            }
+            
+            // Retrieve form data
+            const investmentType = document.getElementById('investmentType').value;
+            const investmentScheme = document.getElementById('investmentScheme').value;
+            const investmentAmount = document.getElementById('investmentAmount').value;
+            const investmentDate = document.getElementById('investmentDate').value;
+            const investmentDuration = document.getElementById('investmentDuration').value;
+            const riskLevel = document.getElementById('riskLevel').value;
+            const taxStatus = document.getElementById('taxStatus').value;
+            const expectedReturn = document.getElementById('expectedReturn').value;
+            const additionalNotes = document.getElementById('additionalNotes').value;
+    
+            const email = sessionStorage.getItem('username'); // Retrieve the email from session storage
+    
+            const investmentData = {
+                email,
+                investmentPurpose: finalPurpose.value, // Use the populated final purpose value
+                investmentType,
+                investmentScheme,
+                investmentAmount,
+                investmentDate,
+                investmentDuration,
+                riskLevel,
+                taxStatus,
+                expectedReturn,
+                additionalNotes
+            };
+    
+            try {
+                const response = await fetch('/add-investment', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(investmentData)
+                });
+    
+                const data = await response.json();
+                alert(data.message);
+    
+                
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        });
+    
+        
+    </script>
+    
+</body>
+
+</html>

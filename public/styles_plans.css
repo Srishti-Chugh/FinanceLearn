@@ -1,0 +1,48 @@
+/* styles_plans.css */
+
+/* Body styling */
+body {
+    background-color: #fdfdfd;
+    color: #060000;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container styling */
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+/* Header styling */
+h1 {
+    color: #5a5a5a;
+}
+
+/* Generated content box styling */
+#generatedContent {
+    background-color: #fffbe6;
+    border: 1px solid #a437f7;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Additional styles for Bootstrap classes */
+.bg-light {
+    background-color: #f8f9fa !important;
+}
+
+.p-4 {
+    padding: 1.5rem !important;
+}
+
+.rounded {
+    border-radius: 0.25rem !important;
+}
+
+.shadow-sm {
+    box-shadow: 0 0.125rem 0.25rem rgba(73, 34, 34, 0.075) !important;
+}

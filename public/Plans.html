@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generated Content</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles_plans.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="display-4 text-center my-4">Personalized Recommendations</h1>
+        <div id="generatedContent" class="bg-light p-4 rounded shadow-sm"></div>
+    </div>
+
+    <script>
+        // Function to get query parameters from URL
+        function getQueryParams() {
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            const content = urlParams.get('content');
+            return content;
+        }
+
+        // Call the displayContent function with the content value from URL query parameters
+        const content = getQueryParams();
+        if (content) {
+            displayContent(content);
+        } else {
+            console.error('Content parameter is missing from the URL');
+        }
+
+        // Function to display the generated content
+        function displayContent(content) {
+            const container = document.getElementById('generatedContent');
+            container.innerHTML = content;
+        }
+    </script>
+</body>
+</html>

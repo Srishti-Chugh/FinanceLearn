@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Budget Tracker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Budget tracking application using JavaScript and localStorage">
+    <meta name="author" content="Your Name">
+    <!--[css/js files > start]-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <!--[css/js files > end]-->
+</head>
+
+<body>
+    <h1 class="text-center">Budget Tracker</h1>
+    <!--[Menu - Start]-->
+    <div class="text-center">
+        <select id="monthSelector" class="form-control">
+            <option value="0">Select Month</option>
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+            <option value="5">May</option>
+            <option value="6">June</option>
+            <option value="7">July</option>
+            <option value="8">August</option>
+            <option value="9">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+        </select>
+    </div>
+   
+    
+    <div class="text-center">
+        <div class="btn btn-success BTN_Add_New">Add New Transaction</div>
+        <div class="btn btn-success BTN_View">View All Transactions</div>
+        <div class="btn btn-success BTN_Delete_All">Delete All Transactions</div>
+    </div>
+    <!--[Menu - End]-->
+    <br><br>
+    <!--[Screen Data - Start]-->
+    <div class="container Screen Screen_Data"></div>
+    <!--[Screen Data - End]-->
+    <!--[New Transaction Template - Start]-->
+    <div class="Screen Template_New_Task" style="display:none;">
+        <div class="panel panel-primary center-block" style="max-width:400px;">
+            <div class="panel-heading text-center">Add A New Transaction</div>
+            <!--[New Transaction Body - Start]-->
+            <div class="panel-body">
+                <!--[Transaction Name - Start]-->
+                <div class="input-group">
+                    <span class="input-group-addon">Transaction Name</span>
+                    <input type="text" class="form-control TransactionName" placeholder="Type In Transaction Name">
+                </div>
+                <br><br>
+                <!--[Transaction Name - End]-->
+                <!--[Amount - Start]-->
+                <div class="input-group">
+                    <span class="input-group-addon">Amount</span>
+                    <input type="number" class="form-control TransactionAmount" placeholder="Type In Amount">
+                </div>
+                <br><br>
+                <!--[Amount - End]-->
+                <!--[Date - Start]-->
+                <div class="input-group">
+                    <span class="input-group-addon">Date</span>
+                    <input type="date" class="form-control TransactionDate">
+                </div>
+                <br><br>
+                <!--[Date - End]-->
+                <!--[Category - Start]-->
+                <div class="input-group">
+                    <span class="input-group-addon">Category</span>
+                    <input type="text" class="form-control TransactionCategory" placeholder="Type In Category">
+                </div>
+                <br><br>
+                <!--[Category - End]-->
+                <!--[Type - Start]-->
+                <div class="input-group">
+                    <span class="input-group-addon">Type</span>
+                    <select class="form-control TransactionType">
+                        <option value="Income">Income</option>
+                        <option value="Expense">Expense</option>
+                    </select>
+                </div>
+                <br><br>
+                <!--[Type - End]-->
+                <div class="btn btn-primary text-center btn_Task">Save</div>
+            </div>
+            <!--[New Transaction Body - End]-->
+        </div>
+    </div>
+    <!--[New Transaction Template - End]-->
+</body>
+
+<script>
+    $(document).ready(function() {
+        // Helper functions
+        function showError(message, element) {
+            alert(message);
+            element.focus();
+        }
+
+        function alertMsg(message, type) {
+            return '<div class="alert alert-' + type + '">' + message + '</div>';
+        }
+
+        // Load transactions from localStorage
+        var tblTransactions = JSON.parse(localStorage.getItem('tblTransactions')) || [];
+
+        // Save transactions to localStorage
+        function saveTransactions() {
+            localStorage.setItem('tblTransactions', JSON.stringify(tblTransactions));
+        }
+
+        // Load new transaction screen
+        $(document).on('click', '.BTN_Add_New', function(event) {
+            var GetTemplateData = $('.Template_New_Task').html();
+            $('.Screen_Data').html(GetTemplateData);
+            $('.Screen_Data').find('.btn_Task').html('Save').addClass('BTN_Save_New_Transaction');
+            $('.Screen_Data').show();
+        });
+
+        // New transaction screen add button action
+        $('.Screen_Data').on('click', '.BTN_Save_New_Transaction', function(event) {
+            var TransactionName = $('.Screen_Data').find('.TransactionName');
+            var TransactionAmount = $('.Screen_Data').find('.TransactionAmount');
+            var TransactionDate = $('.Screen_Data').find('.TransactionDate');
+            var TransactionCategory = $('.Screen_Data').find('.TransactionCategory');
+            var TransactionType = $('.Screen_Data').find('.TransactionType');
+
+            if (!TransactionName.val()) {
+                showError("Please enter Transaction Name", TransactionName);
+            } else if (!TransactionAmount.val()) {
+                showError("Please enter Amount", TransactionAmount);
+            } else if (!TransactionDate.val()) {
+                showError("Please enter Date", TransactionDate);
+            } else if (!TransactionCategory.val()) {
+                showError("Please enter Category", TransactionCategory);
+            } else {
+                var AddTransaction = {
+                    rec_id: Date.now().toString(),
+                    TransactionName: TransactionName.val(),
+                    TransactionAmount: parseFloat(TransactionAmount.val()).toFixed(2),
+                    TransactionDate: TransactionDate.val(),
+                    TransactionCategory: TransactionCategory.val(),
+                    TransactionType: TransactionType.val(),
+                };
+
+                tblTransactions.push(AddTransaction);
+                saveTransactions();
+
+                var d = alertMsg("Successfully added your new transaction", "success");
+                $('.Screen_Data').html(d);
+
+                $(".BTN_View").click();
+            }
+        });
+
+        // View all transactions
+        $(document).on('click', '.BTN_View', function(event) {
+            var selectedMonth = $('#monthSelector').val(); // Get the selected month
+
+            var AllTransactions = tblTransactions.filter(function(transaction) {
+                // Filter transactions for the selected month
+                return moment(transaction.TransactionDate).month() == selectedMonth - 1; // Month indexes start from 0
+            });
+
+            if (AllTransactions.length < 1) {
+                var d = alertMsg("Oops...Looks like there are no transactions for the selected month. <br><br> You should add a transaction first", "warning");
+                $('.Screen_Data').html(d).show();
+                return false;
+            }
+
+            var incomeTable = '<div class="col-md-6"><h3>Income Transactions</h3><table class="table table-hover">';
+            incomeTable += '<thead><th>Line Num</th><th>Transaction Name</th><th>Amount</th><th>Date</th><th>Category</th></thead>';
+            incomeTable += '<tbody>';
+
+            var expenseTable = '<div class="col-md-6"><h3>Expense Transactions</h3><table class="table table-hover">';
+            expenseTable += '<thead><th>Line Num</th><th>Transaction Name</th><th>Amount</th><th>Date</th><th>Category</th></thead>';
+            expenseTable += '<tbody>';
+
+            for (var i = 0; i < AllTransactions.length; i++) {
+                var val = AllTransactions[i];
+                var line_num = i + 1;
+                var row = '<tr><td>' + line_num + '</td><td>' + val.TransactionName + '</td><td>' + val.TransactionAmount + '</td><td>' + moment(val.TransactionDate).format('M-D-Y') + '</td><td>' + val.TransactionCategory + '</td>';
+
+                // Edit/Delete options
+                row += '<td><a href="#" class="BTN_Edit_Entry" rec_id="' + val.rec_id + '">Edit</a> / <a href="#" class="BTN_Delete_Entry" rec_id="' + val.rec_id + '" transaction_name="' + val.TransactionName + '">Delete</a></td></tr>';
+
+                // Check the type of transaction and add it to the corresponding table
+                if (val.TransactionType === 'Income') {
+                    incomeTable += row;
+                } else {
+                    expenseTable += row;
+                }
+            }
+
+            incomeTable += '</tbody></table></div>';
+            expenseTable += '</tbody></table></div>';
+
+            // Append both tables to the Screen_Data div
+            $('.Screen_Data').html(incomeTable + expenseTable).show();
+        });
+
+// Update month filter when month is selected from dropdown
+$('#monthSelector').on('change', function() {
+    $(".BTN_View").click(); // Trigger view button click to update displayed transactions
+});
+
+
+        // Edit transaction
+        $(document).on('click', '.BTN_Edit_Entry', function(event) {
+            var rec_id = $(this).attr('rec_id');
+            var GetTemplateData = $('.Template_New_Task').html();
+
+            $('.Screen_Data').html(GetTemplateData);
+            $('.Screen_Data').find('.btn_Task').html('Update').addClass('BTN_Update_Transaction');
+            $('.Screen_Data').find('.btn_Task').attr('rec_id', rec_id);
+
+            var data = tblTransactions.filter(val => val.rec_id == rec_id)[0];
+
+            $('.Screen_Data').find('.TransactionName').val(data.TransactionName);
+            $('.Screen_Data').find('.TransactionAmount').val(data.TransactionAmount);
+            $('.Screen_Data').find('.TransactionDate').val(data.TransactionDate);
+            $('.Screen_Data').find('.TransactionCategory').val(data.TransactionCategory);
+            $('.Screen_Data').find('.TransactionType').val(data.TransactionType);
+
+            $('.Screen_Data').show();
+        });
+
+        // Update transaction
+        $('.Screen_Data').on('click', '.BTN_Update_Transaction', function(event) {
+            var rec_id = $(this).attr('rec_id');
+
+            var TransactionName = $('.Screen_Data').find('.TransactionName');
+            var TransactionAmount = $('.Screen_Data').find('.TransactionAmount');
+            var TransactionDate = $('.Screen_Data').find('.TransactionDate');
+            var TransactionCategory = $('.Screen_Data').find('.TransactionCategory');
+            var TransactionType = $('.Screen_Data').find('.TransactionType');
+
+            if (!TransactionName.val()) {
+                showError("Please enter Transaction Name", TransactionName);
+            } else if (!TransactionAmount.val()) {
+                showError("Please enter Amount", TransactionAmount);
+            } else if (!TransactionDate.val()) {
+                showError("Please enter Date", TransactionDate);
+            } else if (!TransactionCategory.val()) {
+                showError("Please enter Category", TransactionCategory);
+            } else {
+                var UpdatedTransaction = {
+                    rec_id: rec_id,
+                    TransactionName: TransactionName.val(),
+                    TransactionAmount: parseFloat(TransactionAmount.val()).toFixed(2),
+                    TransactionDate: TransactionDate.val(),
+                    TransactionCategory: TransactionCategory.val(),
+                    TransactionType: TransactionType.val(),
+                };
+
+                tblTransactions = tblTransactions.filter(val => val.rec_id != rec_id);
+                tblTransactions.push(UpdatedTransaction);
+                saveTransactions();
+
+                var d = alertMsg("Successfully updated your transaction", "success");
+                $('.Screen_Data').html(d);
+
+                $(".BTN_View").click();
+            }
+        });
+
+        // Delete transaction
+        $(document).on('click', '.BTN_Delete_Entry', function(event) {
+            var rec_id = $(this).attr('rec_id');
+            var transaction_name = $(this).attr('transaction_name');
+
+            if (confirm("Are you sure you want to delete Transaction (" + transaction_name + ") ?")) {
+                tblTransactions = tblTransactions.filter(val => val.rec_id != rec_id);
+                saveTransactions();
+                $(".BTN_View").click();
+            }
+        });
+
+        // Delete all transactions
+        $(document).on('click', '.BTN_Delete_All', function(event) {
+            if (tblTransactions.length < 1) {
+                var d = alertMsg("Oops...Looks like there are no transactions. <br><br> You should add a transaction first", "warning");
+                $('.Screen_Data').html(d).show();
+                return false;
+            }
+
+            if (confirm("Are you sure you want to delete All Transactions?")) {
+                tblTransactions = [];
+                saveTransactions();
+                $(".BTN_View").click();
+            }
+        });
+
+        // Show transactions on page load
+        if (tblTransactions.length > 0) {
+            $(".BTN_View").click();
+        }
+    });
+</script>
+
+</html> 

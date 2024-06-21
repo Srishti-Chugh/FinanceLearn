@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="insurance_styles.css">
+    <title>Insurance Webpage</title>
+</head>
+<body>
+    <header>
+        <button id="menuButton" onclick="toggleNav()">&#9776;</button>
+        <h1>Insurance Company</h1>
+    </header>
+
+    <div id="sideNav" class="side-nav">
+        <a href="#" class="closebtn" id="closeBtn">&times;</a>
+        <a href="#">Home</a>
+        <a href="#">Services</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </div>
+
+    <section class="hero">
+        <div class="card leftmost"><img src="image1.jpg" alt="Image 1"></div>
+        <div class="card square1"><img src="image2.jpg" alt="Image 2"></div>
+        <div class="card square2"><img src="image3.jpg" alt="Image 3"></div>
+        <div class="card square3"><img src="image4.jpg" alt="Image 4"></div>
+        <div class="card text">
+            <h2>Securing Your Future, Protecting Your Present</h2>
+            <p>In today's uncertain world, having the right insurance coverage is essential for safeguarding your assets, your loved ones, and your peace of mind. Our insurance solutions offer comprehensive protection and peace of mind.</p>
+            <button>Get a Quote</button>
+        </div>
+        <div class="card rightmost"><img src="image5.jpg" alt="Image 5"></div>
+    </section>
+
+    <section class="importance">
+        <div class="importance-item">
+            <img src="logo1.png" alt="Logo 1" class="importance-logo">
+            <p>Insurance provides financial security in case of unexpected events and emergencies, protecting your assets and loved ones.</p>
+        </div>
+        <div class="importance-item">
+            <img src="logo2.png" alt="Logo 2" class="importance-logo">
+            <p>It ensures continuity of income and helps maintain your lifestyle even when faced with unforeseen circumstances.</p>
+        </div>
+        <div class="importance-item">
+            <img src="logo3.png" alt="Logo 3" class="importance-logo">
+            <p>Insurance can cover medical expenses, reducing the financial burden of healthcare costs on you and your family.</p>
+        </div>
+        <div class="importance-item">
+            <img src="logo4.png" alt="Logo 4" class="importance-logo">
+            <p>It also helps in wealth preservation and can be a part of your long-term financial planning strategy.</p>
+        </div>
+    </section>
+
+    <div class="accordion">
+        <div class="accordion-item">
+            <div class="accordion-header">Personal Information</div>
+            <div class="accordion-content">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required><br>
+
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" required><br>
+
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" required>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select><br>
+
+                <label for="location">Location:</label>
+                <input type="text" id="location" name="location" required><br>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <div class="accordion-header">Insurance Needs</div>
+            <div class="accordion-content">
+                <label for="insuranceType">Type of Insurance:</label>
+                <select id="insuranceType" name="insuranceType" required>
+                    <option value="health">Health</option>
+                    <option value="life">Life</option>
+                    <option value="auto">Auto</option>
+                    <option value="property">Property</option>
+                </select><br>
+
+                <label for="coverage">Coverage Needs:</label>
+                <select id="coverage" name="coverage" required>
+                    <option value="individual">Individual</option>
+                    <option value="family">Family</option>
+                    <option value="chronic">Chronic Illness Coverage</option>
+                    <option value="full">Full Coverage</option>
+                    <option value="basic">Basic Coverage</option>
+                </select><br>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <div class="accordion-header">Financial Information</div>
+            <div class="accordion-content">
+                <label for="income">Annual Income:</label>
+                <select id="income" name="income" required>
+                    <option value="below_20k">Below $20,000</option>
+                    <option value="20k_50k">$20,000 - $50,000</option>
+                    <option value="50k_100k">$50,000 - $100,000</option>
+                    <option value="above_100k">Above $100,000</option>
+                </select><br>
+
+                <label for="budget">Monthly Budget for Insurance Premiums:</label>
+                <select id="budget" name="budget" required>
+                    <option value="below_100">Below $100</option>
+                    <option value="100_200">$100 - $200</option>
+                    <option value="200_500">$200 - $500</option>
+                    <option value="above_500">Above $500</option>
+                </select><br>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <div class="accordion-header">Lifestyle Information</div>
+            <div class="accordion-content">
+                <!-- Lifestyle information fields -->
+            </div>
+        </div>
+        <div class="accordion-item">
+            <div class="accordion-header">Premium Calculator</div>
+            <div class="accordion-content">
+                <label for="coverageAmount">Coverage Amount:</label>
+                <select id="coverageAmount" name="coverageAmount" required>
+                    <option value="10000">$10,000</option>
+                    <option value="50000">$50,000</option>
+                    <option value="100000">$100,000</option>
+                    <option value="500000">$500,000</option>
+                    <option value="1000000">$1,000,000</option>
+                </select><br>
+
+                <label for="policyTerm">Policy Term (in years):</label>
+                <select id="policyTerm" name="policyTerm" required>
+                    <option value="1">1 year</option>
+                    <option value="5">5 years</option>
+                    <option value="10">10 years</option>
+                    <option value="20">20 years</option>
+                    <option value="30">30 years</option>
+                </select><br>
+
+                <label for="deductible">Deductible:</label>
+                <select id="deductible" name="deductible" required>
+                    <option value="0">$0</option>
+                    <option value="100">$100</option>
+                    <option value="500">$500</option>
+                    <option value="1000">$1,000</option>
+                    <option value="2000">$2,000</option>
+                </select><br>
+            </div>
+        </div>
+    </div>
+    <section class="insurance-cards">
+        <div class="insurance-card" id="healthInsuranceCard">
+            <img src="health_insurance_logo.png" alt="Health Insurance">
+            <p>Health Insurance</p>
+        </div>
+        <div class="insurance-card" id="lifeInsuranceCard">
+            <img src="life_insurance_logo.png" alt="Life Insurance">
+            <p>Life Insurance</p>
+        </div>
+        <div class="insurance-card" id="cropAgricultureInsuranceCard">
+            <img src="home_insurance_logo.png" alt="Crop and Agriculture Insurance">
+            <p>Crop and Agriculture Insurance</p>
+        </div>
+        <div class="insurance-card" id="naturalDisasterInsuranceCard">
+            <img src="travel_insurance_logo.png" alt="Natural Disaster Insurance">
+            <p>Natural Disaster Insurance</p>
+        </div>
+    </section>
+
+    <section class="banner">
+        <!-- Banner image will be dynamically added here -->
+    </section>
+  
+    <section class="insurance-details">
+        <!-- Content for insurance details will be dynamically added here -->
+    </section>
+
+    <section class="insurance-comparison">
+        <!-- Content for insurance comparison will be dynamically added here -->
+    </section>
+
+    <script src="insurance_script.js"></script>
+</body>
+</html>

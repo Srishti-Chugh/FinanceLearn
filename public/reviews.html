@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Page</title>
+    <link rel="stylesheet" href="review_styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Leave a Review</h1>
+        <form id="reviewForm">
+            <label for="category">Review Category:</label>
+            <select id="category" name="category" required>
+                <option value="Scheme Type">Scheme Type</option>
+                <option value="Financial Goal">Financial Goal</option>
+                <option value="User Experience">User Experience</option>
+                <option value="Performance and Returns">Performance and Returns</option>
+                <option value="Educational Resources and Learning Experience">Educational Resources and Learning Experience</option>
+            </select>
+
+            <label for="review">Review:</label>
+            <textarea id="review" name="review" required></textarea>
+
+            <button type="submit">Submit Review</button>
+        </form>
+        <div id="reviewsContainer">
+            <h2>All Reviews</h2>
+            <ul id="reviewsList"></ul>
+        </div>
+    </div>
+    <div id="sentimentDisplay"></div> <!-- Make sure this exists -->
+    <div id="reviewsList"></div>
+    <script src="review_script.js"></script>
+</body>
+</html>

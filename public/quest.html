@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="/queststyles.css">
+</head>
+<body>
+    <div class="form-container">
+        <div class="container">
+            <h1>Fill your details</h1>
+            <form id="registrationForm" onsubmit="submitForm(event)">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender:</label>
+                    <select id="gender" name="gender" required>
+                        <option value="">Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" name="age" placeholder="Enter your age" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Residential Address:</label>
+                    <input type="text" id="address" name="address" placeholder="Enter your address" required>
+                </div>
+                <div class="form-group">
+                    <label for="income">Total Income:</label>
+                    <input type="number" id="income" name="income" placeholder="Enter your total income" required>
+                </div>
+                <div class="form-group">
+                    <label for="expenses">Total Spend on Household Chores:</label>
+                    <input type="number" id="expenses" name="expenses" placeholder="Enter total spend on household chores" required>
+                </div>
+                <div class="form-group">
+                    <label for="amount">Target Amount:</label>
+                    <input type="number" id="amount" name="amount" placeholder="Enter target amount" required>
+                </div>
+                <div class="form-group">
+                    <label for="time">Timeframe (months):</label>
+                    <input type="number" id="time" name="time" placeholder="Enter timeframe in months" required>
+                </div>
+                <div class="checkbox-group">
+                    <label>Household Chores:</label><br>
+                    <input type="checkbox" id="electricity" name="householdChores" value="Electricity Bill">
+                    <label for="electricity">Electricity Bill</label><br>
+                    <input type="checkbox" id="water" name="householdChores" value="Water Bill">
+                    <label for="water">Water Bill</label><br>
+                    <input type="checkbox" id="gas" name="householdChores" value="Gas Bill">
+                    <label for="gas">Gas Bill</label><br>
+                    <!-- Add more checkboxes as needed -->
+                </div>
+                <div class="form-group">
+                    <label for="goals">Goals:</label>
+                    <select id="goals" name="goals" required>
+                        <option value="">Select a goal</option>
+                        <option value="retirement schemes">retirement schemes</option>
+                        <option value="housing schemes">housing related schemes</option>
+                        <option value="educational schemes and loans">educational schemes and loans</option>
+                        <option value="Women specific schemes">Women specific schemes</option>
+                    </select>
+                </div>
+
+                <!--div class="checkbox-group">
+                    <label>Goals:</label><br>
+                    <input type="checkbox" id="retirement" name="goals" value="Retirement Savings">
+                    <label for="retirement">Retirement Savings</label><br>
+                    <input type="checkbox" id="educational expenses" name="goals" value="Educational Savings">
+                    <label for="retirement">Educational Savings</label><br>
+                    <input type="checkbox" id="medical schemes" name="goals" value="Medical Expenses">
+                    <label for="retirement">Medical Savings</label><br>
+                    <input type="checkbox" id="Home Schemes" name="goals" value="Secured future, real estate">
+                    <label for="house">home loans based schemes</label><br>
+                    < Add more checkboxes as needed >
+                </div-->
+                <button type="submit" class="submit-button">Submit</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        async function submitForm(event) {
+            console.log('Form submission triggered');
+            event.preventDefault(); // Prevent default form submission
+            
+            // Collect form data
+            const email = sessionStorage.getItem('username'); // Retrieve the email from session storage
+            const formData = {
+                email,
+                name: document.getElementById('name').value,
+                gender: document.getElementById('gender').value,
+                age: document.getElementById('age').value,
+                address: document.getElementById('address').value,
+                income: document.getElementById('income').value,
+                expenses: document.getElementById('expenses').value,
+                amount: document.getElementById('amount').value,
+                time: document.getElementById('time').value,
+                householdChores: Array.from(document.querySelectorAll('input[name="householdChores"]:checked')).map(checkbox => checkbox.value),
+                goals: document.getElementById('goals').value
+            };
+            
+            console.log('Form data:', formData); // Log the collected form data
+
+            try {
+                const response = await fetch('/submitAnalysisData', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                console.log('Response:', response); // Log the response object
+
+                const data = await response.json();
+                console.log('Response data:', data); // Log the response data
+
+                // Log the received data before processing it
+                //console.log('Received data:', data);
+
+                if (data.message === "Content generated successfully") {
+                    // Redirect to plans.html with the generated content
+                    const encodedContent = encodeURIComponent(data.generatedContent);
+                    window.location.href = `plans.html?content=${encodedContent}`;
+                } else {
+                    alert('Failed to generate content.');
+                }   
+            }    
+            catch (error) {
+                console.error('Error:', error);
+    
+                res.status(500).json({ message: 'Error generating content' }); // Send error response
+            }
+            try {
+                
+                const response = await fetch('/add-goal', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const data = await response.json();
+
+                if (response.status === 201) {
+                    alert('Goal added successfully!');
+                } else {
+                    alert(`Failed to add goal: ${data.message}`);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred while adding the goal.');
+            }
+        }
+
+    </script>
+</body>
+</html>

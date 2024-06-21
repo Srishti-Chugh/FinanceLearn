@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Budget Tracker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Budget tracking application using JavaScript and localStorage">
+    <meta name="author" content="Your Name">
+    <!--[css/js files > start]-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <!--[css/js files > end]-->
+    <style>
+        .container {
+            margin-top: 20px;
+        }
+        .Charts {
+            display: flex;
+            justify-content: space-between;
+        }
+        .Charts canvas {
+            flex: 1;
+            padding: 10px;
+        }
+        .summary-section {
+            display: flex;
+        }
+        .summary-half {
+            flex: 1;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="text-center">Budget Tracker</h1>
+    <!--[Menu - Start]-->
+    <div class="text-center">
+        <select id="monthSelector" class="form-control">
+            <option value="0">Select Month</option>
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+            <option value="5">May</option>
+            <option value="6">June</option>
+            <option value="7">July</option>
+            <option value="8">August</option>
+            <option value="9">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="plannedIncome">Planned Income:</label>
+        <input type="number" id="plannedIncome" class="form-control" placeholder="Enter planned income">
+    </div>
+    <div class="form-group">
+        <label for="plannedExpenses">Planned Expenses:</label>
+        <input type="number" id="plannedExpenses" class="form-control" placeholder="Enter planned expenses">
+    </div>
+
+
+    <div class="text-center">
+        <div class="btn btn-success BTN_Add_New">Add New Transaction</div>
+        <div class="btn btn-success BTN_View">View All Transactions</div>
+        <div class="btn btn-success BTN_Delete_All">Delete All Transactions</div>
+    </div>
+    <!--[Menu - End]-->
+    <br><br>
+    <!--[Screen Data - Start]-->
+    <div class="container Screen Screen_Data"></div>
+    <!--[Screen Data - End]-->
+    <!--[New Transaction Modal - Start]-->
+    <div id="newTransactionModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add New Transaction</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="TransactionName">Transaction Name:</label>
+                        <input type="text" class="form-control" id="TransactionName">
+                    </div>
+                    <div class="form-group">
+                        <label for="TransactionAmount">Amount:</label>
+                        <input type="number" class="form-control" id="TransactionAmount">
+                    </div>
+                    <div class="form-group">
+                        <label for="TransactionDate">Date:</label>
+                        <input type="date" class="form-control" id="TransactionDate">
+                    </div>
+                    <div class="form-group">
+                        <label for="TransactionCategory">Category:</label>
+                        <select class="form-control" id="TransactionCategory">
+                            <!-- Income categories -->
+                            <option value="Salary">Salary</option>
+                            <option value="Freelance">Freelance</option>
+                            <option value="Investments">Investments</option>
+                            <!-- Expense categories -->
+                            <option value="Groceries">Groceries</option>
+                            <option value="Rent">Rent</option>
+                            <option value="Utilities">Utilities</option>
+                            <option value="Entertainment">Entertainment</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="TransactionType">Type:</label>
+                        <select class="form-control" id="TransactionType">
+                            <option value="Income">Income</option>
+                            <option value="Expense">Expense</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary BTN_Save_New_Transaction">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="updateTransactionModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Update Transaction</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="UpdateTransactionName">Transaction Name:</label>
+                        <input type="text" class="form-control" id="UpdateTransactionName">
+                    </div>
+                    <div class="form-group">
+                        <label for="UpdateTransactionAmount">Amount:</label>
+                        <input type="number" class="form-control" id="UpdateTransactionAmount">
+                    </div>
+                    <div class="form-group">
+                        <label for="UpdateTransactionDate">Date:</label>
+                        <input type="date" class="form-control" id="UpdateTransactionDate">
+                    </div>
+                    <div class="form-group">
+                        <label for="UpdateTransactionCategory">Category:</label>
+                        <select class="form-control" id="UpdateTransactionCategory">
+                            <!-- Income categories -->
+                            <option value="Salary">Salary</option>
+                            <option value="Freelance">Freelance</option>
+                            <option value="Investments">Investments</option>
+                            <!-- Expense categories -->
+                            <option value="Groceries">Groceries</option>
+                            <option value="Rent">Rent</option>
+                            <option value="Utilities">Utilities</option>
+                            <option value="Entertainment">Entertainment</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="UpdateTransactionType">Type:</label>
+                        <select class="form-control" id="UpdateTransactionType">
+                            <option value="Income">Income</option>
+                            <option value="Expense">Expense</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary BTN_Update_Transaction">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!--[New Transaction Modal - End]-->
+    <!-- Delete Confirmation Modal -->
+    <div id="confirmationModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Confirmation</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete this transaction?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" id="confirmDelete">Yes</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--[Summary Section - Start]-->
+<div class="container">
+            <div class="summary-section">
+                <div class="summary-half">
+                    <h3 class="text-center">Summary</h3>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h4>Total Income:</h4>
+                            <p id="totalIncome">0</p>
+                        </div>
+                        <div class="col-md-4">
+                            <h4>Total Expenses:</h4>
+                            <p id="totalExpenses">0</p>
+                        </div>
+                        <div class="col-md-4">
+                            <h4>Net Saving:</h4>
+                            <p id="netSaving">0</p>
+                        </div>
+                    </div>
+                    <canvas id="budgetStatusChart" width="200" height="100"></canvas>
+                </div>
+                <div class="summary-half">
+                    <h3 class="text-center">Progress</h3>
+                    <div class="progress mb-3">
+                        <div id="incomeProgressBar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                    </div>
+                    <div class="progress">
+                        <div id="expensesProgressBar" class="progress-bar bg-danger" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                    </div>
+                </div>
+            </div>
+    
+</div>
+<!--[Summary Section - End]-->
+
+ <!-- [Expenses Section - Start] -->
+ <div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="Charts">
+                <h3 class="text-center">Category-wise Expenses</h3>
+                <canvas id="categoryExpensesChart" width="300" height="300"></canvas>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="Charts">
+                <h3 class="text-center">Day-wise Expenses</h3>
+                <canvas id="expensesByDateChart" width="300" height="200"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- [Expenses Section - End] -->
+</body>
+
+<script>
+    $(document).ready(function() {
+        // Helper functions
+        function showError(message, element) {
+            alert(message);
+            element.focus();
+        }
+
+        function alertMsg(message, type) {
+            return '<div class="alert alert-' + type + '">' + message + '</div>';
+        }
+
+        // Load transactions from localStorage
+        var tblTransactions = JSON.parse(localStorage.getItem('tblTransactions')) || [];
+
+        // Save transactions to localStorage
+        function saveTransactions() {
+            localStorage.setItem('tblTransactions', JSON.stringify(tblTransactions));
+        }
+
+        // Load new transaction modal
+        $(document).on('click', '.BTN_Add_New', function(event) {
+            $('#newTransactionModal').modal('show');
+        });
+
+        // New transaction modal add button action
+        $('.BTN_Save_New_Transaction').on('click', function(event) {
+            var TransactionName = $('#TransactionName');
+            var TransactionAmount = $('#TransactionAmount');
+            var TransactionDate = $('#TransactionDate');
+            var TransactionCategory = $('#TransactionCategory');
+            var TransactionType = $('#TransactionType');
+
+            if (!TransactionName.val()) {
+                showError("Please enter Transaction Name", TransactionName);
+            } else if (!TransactionAmount.val()) {
+                showError("Please enter Amount", TransactionAmount);
+            } else if (!TransactionDate.val()) {
+                showError("Please enter Date", TransactionDate);
+            } else if (!TransactionCategory.val()) {
+                showError("Please enter Category", TransactionCategory);
+            } else {
+                var AddTransaction = {
+                    rec_id: Date.now().toString(),
+                    TransactionName: TransactionName.val(),
+                    TransactionAmount: parseFloat(TransactionAmount.val()).toFixed(2),
+                    TransactionDate: TransactionDate.val(),
+                    TransactionCategory: TransactionCategory.val(),
+                    TransactionType: TransactionType.val(),
+                };
+
+                tblTransactions.push(AddTransaction);
+                saveTransactions();
+
+                $('#newTransactionModal').modal('hide');
+                $(".BTN_View").click();
+            }
+        });
+
+
+        // Calculate summary data
+        function calculateSummary(transactions) {
+            var totalIncome = 0;
+            var totalExpenses = 0;
+
+            transactions.forEach(function(transaction) {
+                if (transaction.TransactionType === 'Income') {
+                    totalIncome += parseFloat(transaction.TransactionAmount);
+                } else {
+                    totalExpenses += parseFloat(transaction.TransactionAmount);
+                }
+            });
+
+            var netSaving = totalIncome - totalExpenses;
+
+            return {
+                totalIncome: totalIncome.toFixed(2),
+                totalExpenses: totalExpenses.toFixed(2),
+                netSaving: netSaving.toFixed(2)
+            };
+        }
+
+        // Update summary
+        function updateSummary(transactions) {
+            var selectedMonth = $('#monthSelector').val(); // Get the selected month
+            var filteredTransactions = transactions.filter(function(transaction) {
+                return moment(transaction.TransactionDate).month() == selectedMonth - 1;
+            });
+
+            // If there are no transactions, set summary values to zero
+            if (transactions.length == 0) {
+                $('#totalIncome').text('0');
+                $('#totalExpenses').text('0');
+                $('#netSaving').text('0');
+            }
+            else {
+                var summaryData = calculateSummary(filteredTransactions);
+                $('#totalIncome').text(summaryData.totalIncome);
+                $('#totalExpenses').text(summaryData.totalExpenses);
+                $('#netSaving').text(summaryData.netSaving);
+            }
+        }
+
+        // Update charts
+        function updateCharts(transactions) {
+            var selectedMonth = $('#monthSelector').val(); // Get the selected month
+            /*var plannedIncome = parseFloat($('#plannedIncome').val()) || 0;
+            var plannedExpenses = parseFloat($('#plannedExpenses').val()) || 0;
+
+            // Update progress bars
+            var incomeProgressBar1 = document.getElementById('incomeProgressBar1');
+            var incomeProgressBar2 = document.getElementById('incomeProgressBar2');
+            var expensesProgressBar1 = document.getElementById('expensesProgressBar1');
+            var expensesProgressBar2 = document.getElementById('expensesProgressBar2');
+            var totalIncome = summaryData.totalIncome;
+            var totalExpenses = summaryData.totalExpenses;
+
+            var incomePercentage1 = plannedIncome ? (totalIncome / plannedIncome * 100) : 0;
+            var incomePercentage2 = totalIncome ? (totalIncome / plannedIncome * 100) : 0; // Assuming second bar for a different aspect
+            var expensesPercentage1 = plannedExpenses ? (totalExpenses / plannedExpenses * 100) : 0;
+            var expensesPercentage2 = totalExpenses ? (totalExpenses / plannedExpenses * 100) : 0; // Assuming second bar for a different aspect
+
+            incomeProgressBar1.style.width = incomePercentage1 + '%';
+            incomeProgressBar1.setAttribute('aria-valuenow', incomePercentage1);
+            incomeProgressBar1.innerText = Math.round(incomePercentage1) + '%';
+
+            incomeProgressBar2.style.width = incomePercentage2 + '%';
+            incomeProgressBar2.setAttribute('aria-valuenow', incomePercentage2);
+            incomeProgressBar2.innerText = Math.round(incomePercentage2) + '%';
+
+            expensesProgressBar1.style.width = expensesPercentage1 + '%';
+            expensesProgressBar1.setAttribute('aria-valuenow', expensesPercentage1);
+            expensesProgressBar1.innerText = Math.round(expensesPercentage1) + '%';
+
+            expensesProgressBar2.style.width = expensesPercentage2 + '%';
+            expensesProgressBar2.setAttribute('aria-valuenow', expensesPercentage2);
+            expensesProgressBar2.innerText = Math.round(expensesPercentage2) + '%';*/
+            var filteredTransactions = transactions.filter(function(transaction) {
+                return moment(transaction.TransactionDate).month() == selectedMonth - 1;
+            });
+            var ctx = document.getElementById('budgetStatusChart').getContext('2d');
+            
+
+            if (filteredTransactions.length == 0) {
+                // If there are no transactions, generate an empty chart
+                var emptyChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Total Income', 'Total Expenses', 'Net Saving'],
+                        datasets: [{
+                            label: 'Budget Status',
+                            data: [0, 0, 0],
+                            backgroundColor: [
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(75, 192, 192, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(75, 192, 192, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                maintainAspectRatio: false
+                            }
+                        }
+                    }
+                });
+            } else {
+                // If there are transactions, update the chart with the new data
+                var summaryData = calculateSummary(filteredTransactions);
+                if (window.myChart) {
+                    window.myChart.data.datasets[0].data = [summaryData.totalIncome, summaryData.totalExpenses, summaryData.netSaving];
+                    window.myChart.update();
+                } else {
+                    window.myChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: ['Total Income', 'Total Expenses', 'Net Saving'],
+                            datasets: [{
+                                label: 'Budget Status',
+                                data: [summaryData.totalIncome, summaryData.totalExpenses, summaryData.netSaving],
+                                backgroundColor: [
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(75, 192, 192, 0.2)'
+                                ],
+                                borderColor: [
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(75, 192, 192, 1)'
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+                }
+            }
+            // Category-wise Expenses Chart
+            var ctx2 = document.getElementById('categoryExpensesChart').getContext('2d');
+            var expenseTransactions = filteredTransactions.filter(function(transaction) {
+                return transaction.TransactionType === 'Expense';
+            });
+
+            var categoryData = {};
+            expenseTransactions.forEach(function(transaction) {
+                if (categoryData[transaction.TransactionCategory]) {
+                    categoryData[transaction.TransactionCategory] += parseFloat(transaction.TransactionAmount);
+                } else {
+                    categoryData[transaction.TransactionCategory] = parseFloat(transaction.TransactionAmount);
+                }
+            });
+
+            var categoryLabels = Object.keys(categoryData);
+            var categoryValues = Object.values(categoryData);
+
+            if (window.categoryChart) {
+                window.categoryChart.data.labels = categoryLabels;
+                window.categoryChart.data.datasets[0].data = categoryValues;
+                window.categoryChart.update();
+            } else {
+                window.categoryChart = new Chart(ctx2, {
+                    type: 'pie',
+                    data: {
+                        labels: categoryLabels,
+                        datasets: [{
+                            label: 'Category-wise Expenses',
+                            data: categoryValues,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false
+                    }
+                });
+            }
+            // Expenses By Date Chart
+            var ctxDate = document.getElementById('expensesByDateChart').getContext('2d');
+            var dateData = {};
+            filteredTransactions.forEach(function(transaction) {
+                if (transaction.TransactionType === 'Expense') {
+                    var date = moment(transaction.TransactionDate).date();
+                    if (!dateData[date]) {
+                        dateData[date] = 0;
+                    }
+                    dateData[date] += parseFloat(transaction.TransactionAmount);
+                }
+            });
+
+            var dateLabels = [];
+            for (var i = 1; i <= moment().month(selectedMonth - 1).daysInMonth(); i++) {
+                dateLabels.push(i);
+            }
+
+            var dateAmounts = dateLabels.map(function(date) {
+                return dateData[date] || 0;
+            });
+
+            if (window.myDateChart) {
+                window.myDateChart.data.labels = dateLabels;
+                window.myDateChart.data.datasets[0].data = dateAmounts;
+                window.myDateChart.update();
+            } else {
+                window.myDateChart = new Chart(ctxDate, {
+                    type: 'line',
+                    data: {
+                        labels: dateLabels,
+                        datasets: [{
+                            label: 'Expenses by Date',
+                            data: dateAmounts,
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
+        // View all transactions
+        $(document).on('click', '.BTN_View', function(event) {
+            var selectedMonth = $('#monthSelector').val(); // Get the selected month
+
+            var AllTransactions = tblTransactions.filter(function(transaction) {
+                // Filter transactions for the selected month
+                return moment(transaction.TransactionDate).month() == selectedMonth - 1; // Month indexes start from 0
+            });
+
+            if (AllTransactions.length < 1) {
+                var d = alertMsg("Oops...Looks like there are no transactions for the selected month. <br><br> You should add a transaction first", "warning");
+                $('.Screen_Data').html(d).show();
+                return false;
+            }
+
+            var incomeTable = '<div class="col-md-6"><h3>Income Transactions</h3><table class="table table-hover">';
+            incomeTable += '<thead><th>Line Num</th><th>Transaction Name</th><th>Amount</th><th>Date</th><th>Category</th></thead>';
+            incomeTable += '<tbody>';
+
+            var expenseTable = '<div class="col-md-6"><h3>Expense Transactions</h3><table class="table table-hover">';
+            expenseTable += '<thead><th>Line Num</th><th>Transaction Name</th><th>Amount</th><th>Date</th><th>Category</th></thead>';
+            expenseTable += '<tbody>';
+
+            for (var i = 0; i < AllTransactions.length; i++) {
+                var val = AllTransactions[i];
+                var line_num = i + 1;
+                var row = '<tr><td>' + line_num + '</td><td>' + val.TransactionName + '</td><td>' + val.TransactionAmount + '</td><td>' + moment(val.TransactionDate).format('M-D-Y') + '</td><td>' + val.TransactionCategory + '</td>';
+
+                // Edit/Delete options
+                row += '<td><a href="#" class="BTN_Edit_Entry" rec_id="' + val.rec_id + '">Edit</a> / <a href="#" class="BTN_Delete_Entry" rec_id="' + val.rec_id + '" transaction_name="' + val.TransactionName + '">Delete</a></td></tr>';
+
+                // Check the type of transaction and add it to the corresponding table
+                if (val.TransactionType === 'Income') {
+                    incomeTable += row;
+                } else {
+                    expenseTable += row;
+                }
+            }
+
+            incomeTable += '</tbody></table></div>';
+            expenseTable += '</tbody></table></div>';
+
+            // Append both tables to the Screen_Data div
+            $('.Screen_Data').html(incomeTable + expenseTable).show();
+
+            // Update summary and charts
+            updateSummary(AllTransactions);
+            updateCharts(AllTransactions);
+        });
+
+        // Edit transaction
+        $(document).on('click', '.BTN_Edit_Entry', function(event) {
+            var rec_id = $(this).attr('rec_id');
+            var transactionIndex = tblTransactions.findIndex(function(transaction) {
+                return transaction.rec_id === rec_id;
+            });
+
+            var transaction = tblTransactions[transactionIndex];
+
+            // Populate update modal with transaction data
+            $('#UpdateTransactionName').val(transaction.TransactionName);
+            $('#UpdateTransactionAmount').val(transaction.TransactionAmount);
+            $('#UpdateTransactionDate').val(transaction.TransactionDate);
+            $('#UpdateTransactionCategory').val(transaction.TransactionCategory);
+            $('#UpdateTransactionType').val(transaction.TransactionType);
+
+            // Show update modal
+            $('#updateTransactionModal').modal('show');
+
+            // Update transaction
+            $('.BTN_Update_Transaction').on('click', function(event) {
+            // Update transaction data
+                transaction.TransactionName = $('#UpdateTransactionName').val();
+                transaction.TransactionAmount = parseFloat($('#UpdateTransactionAmount').val()).toFixed(2);
+                transaction.TransactionDate = $('#UpdateTransactionDate').val();
+                transaction.TransactionCategory = $('#UpdateTransactionCategory').val();
+                transaction.TransactionType = $('#UpdateTransactionType').val();
+
+                // Update the transaction in the array
+                tblTransactions[transactionIndex] = transaction;
+                saveTransactions();
+
+                // Hide update modal
+                $('#updateTransactionModal').modal('hide');
+
+                // Re-render transactions
+                $(".BTN_View").click();
+            });
+        });
+
+        // Delete transaction
+        $(document).on('click', '.BTN_Delete_Entry', function(event) {
+            var rec_id = $(this).attr('rec_id');
+
+            // Store the rec_id of the transaction to be deleted in a data attribute of the modal
+            $('#confirmationModal').data('rec_id', rec_id);
+
+            // Show the confirmation modal
+            $('#confirmationModal').modal('show');
+        });
+        // Confirm delete action
+        $('#confirmDelete').on('click', function() {
+            var rec_id = $('#confirmationModal').data('rec_id');
+
+            // Find index of the transaction to delete
+            var transactionIndex = tblTransactions.findIndex(function(transaction) {
+                return transaction.rec_id === rec_id;
+            });
+
+            // Remove the transaction from the array
+            tblTransactions.splice(transactionIndex, 1);
+
+            // Save the updated transactions to localStorage
+            saveTransactions();
+
+            // Re-render transactions
+            $(".BTN_View").click();
+
+            // Hide the confirmation modal
+            $('#confirmationModal').modal('hide');
+        });
+
+
+
+        // Update month filter when month is selected from dropdown
+        $('#monthSelector').on('change', function() {
+            $(".BTN_View").click(); // Trigger view button click to update displayed transactions
+        });
+
+        // Show transactions on page load
+        if (tblTransactions.length > 0) {
+            $(".BTN_View").click();
+        }
+    });
+</script>
+
+</html>  
