@@ -13,9 +13,78 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
     <!--[css/js files > end]-->
+    
     <style>
+        /* Custom styles for header and sidebar */
+        body {
+            font-family: Arial, sans-serif;
+            transition: margin-left 0.5s;
+        }
+        .h2{
+            text-align:  center;
+        }
+        .header {
+            background-color: rgb(3, 33, 90);
+            color: white;
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            justify-content: space-between;
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            background-color: rgb(3, 21, 85);
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #575757;
+        }
+
+        .open-sidebar-btn {
+            font-size: 20px;
+            cursor: pointer;
+            color: white;
+            border: none;
+            background: none;
+        }
+        #savePlannedValues {
+            margin-top: 10px; /* Add margin to the top of the button */
+            margin-left: 100px;
+        }
+        label[for="plannedIncome"] {
+            padding-left: 100px; /* Adjust the padding value as needed */
+        }
+        label[for="plannedExpenses"] {
+            padding-left: 100px; /* Adjust the padding value as needed */
+        }
+        /* Adjust the widths of the input fields */
+        #monthSelector,
+        #plannedIncome,
+        #plannedExpenses {
+            width:300px;
+            margin-left: 100px; /* Adjust the padding value as needed */
+        }
         .container {
             margin-top: 20px;
+            
         }
         .Charts {
             display: flex;
@@ -32,13 +101,30 @@
             flex: 1;
             padding: 10px;
         }
+        .summary-half2 {
+            flex: 1;
+            padding: 10px;
+        }
     </style>
 </head>
 
 <body>
-    <h1 class="text-center">Budget Tracker</h1>
+    <div class="header">
+        <button class="open-sidebar-btn" onclick="openSidebar()">☰</button>
+        <h1>Budget Tracker</h1>
+    </div>
+
+    <div id="sidebar" class="sidebar">
+        <a href="javascript:void(0)" onclick="closeSidebar()">Close ×</a>
+        <a href="#">Link 1</a>
+        <a href="#">Link 2</a>
+        <a href="#">Link 3</a>
+        <a href="#">Link 4</a>
+    </div>
+    <h1 class="text-center"></h1>
     <!--[Menu - Start]-->
-    <div class="text-center">
+    <div class="text-center form-group">
+        
         <select id="monthSelector" class="form-control">
             <option value="0">Select Month</option>
             <option value="1">January</option>
@@ -63,7 +149,7 @@
         <label for="plannedExpenses">Planned Expenses:</label>
         <input type="number" id="plannedExpenses" class="form-control" placeholder="Enter planned expenses">
     </div>
-
+    <button id="savePlannedValues" class="btn btn-primary">Save Planned Values</button>
 
     <div class="text-center">
         <div class="btn btn-success BTN_Add_New">Add New Transaction</div>
@@ -200,7 +286,7 @@
 
     <!--[Summary Section - Start]-->
 <div class="container">
-            <div class="summary-section">
+           
                 <div class="summary-half">
                     <h3 class="text-center">Summary</h3>
                     <div class="row">
@@ -219,16 +305,26 @@
                     </div>
                     <canvas id="budgetStatusChart" width="200" height="100"></canvas>
                 </div>
-                <div class="summary-half">
-                    <h3 class="text-center">Progress</h3>
-                    <div class="progress mb-3">
-                        <div id="incomeProgressBar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                <div class="summary-half2">
+                    <!-- Income section -->
+                    <h3>Income</h3>
+                    <div class="progress">
+                        <div id="plannedIncomeProgressBar" class="progress-bar bg-info" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">Planned Income:Rs.0</div>
                     </div>
                     <div class="progress">
-                        <div id="expensesProgressBar" class="progress-bar bg-danger" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                        <div id="actualIncomeProgressBar" class="progress-bar bg-success" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">Actual Income:Rs.0</div>
+                    </div>
+
+                    <!-- Expenses section -->
+                    <h3>Expenses</h3>
+                    <div class="progress">
+                        <div id="plannedExpensesProgressBar" class="progress-bar bg-warning" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">Planned Expenses:Rs.0</div>
+                    </div>
+                    <div class="progress">
+                        <div id="actualExpensesProgressBar" class="progress-bar bg-danger" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">Actual Expenses:Rs.0</div>
                     </div>
                 </div>
-            </div>
+            
     
 </div>
 <!--[Summary Section - End]-->
@@ -242,7 +338,7 @@
                 <canvas id="categoryExpensesChart" width="300" height="300"></canvas>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-7">
             <div class="Charts">
                 <h3 class="text-center">Day-wise Expenses</h3>
                 <canvas id="expensesByDateChart" width="300" height="200"></canvas>
@@ -254,6 +350,16 @@
 </body>
 
 <script>
+    // JavaScript functions for sidebar
+    function openSidebar() {
+        document.getElementById("sidebar").style.left = "0";
+        document.body.style.marginLeft = "250px"; /* Adjusted to shift content */
+    }
+
+    function closeSidebar() {
+        document.getElementById("sidebar").style.left = "-250px";
+        document.body.style.marginLeft = "0"; /* Adjusted to shift content */
+    }
     $(document).ready(function() {
         // Helper functions
         function showError(message, element) {
@@ -272,6 +378,44 @@
         function saveTransactions() {
             localStorage.setItem('tblTransactions', JSON.stringify(tblTransactions));
         }
+
+        
+        // Save planned values to localStorage
+        $('#savePlannedValues').on('click', function() {
+            var plannedIncome = parseFloat($('#plannedIncome').val());
+            var plannedExpenses = parseFloat($('#plannedExpenses').val());
+
+            var selectedMonth = $('#monthSelector').val();
+
+            if (!plannedIncome) {
+                showError("Please enter planned income", $('#plannedIncome'));
+            } else if (!plannedExpenses) {
+                showError("Please enter planned expenses", $('#plannedExpenses'));
+            } else {
+                localStorage.setItem('plannedIncome_' + selectedMonth, plannedIncome);
+                localStorage.setItem('plannedExpenses_' + selectedMonth, plannedExpenses);
+
+                updateProgressBars();
+            }
+        });
+        // Load planned values from localStorage
+        function loadPlannedValues() {
+            var selectedMonth = $('#monthSelector').val();
+            var plannedIncome = localStorage.getItem('plannedIncome_' + selectedMonth);
+            var plannedExpenses = localStorage.getItem('plannedExpenses_' + selectedMonth);
+            $('#plannedIncome').val(plannedIncome || '');
+            $('#plannedExpenses').val(plannedExpenses || '');
+            updateProgressBars();
+        }
+        // Load planned values when the page is loaded
+        loadPlannedValues();
+
+        // Load planned values when a month is selected
+        $('#monthSelector').on('change', function() {
+            loadPlannedValues();
+        });
+
+
 
         // Load new transaction modal
         $(document).on('click', '.BTN_Add_New', function(event) {
@@ -359,37 +503,7 @@
         // Update charts
         function updateCharts(transactions) {
             var selectedMonth = $('#monthSelector').val(); // Get the selected month
-            /*var plannedIncome = parseFloat($('#plannedIncome').val()) || 0;
-            var plannedExpenses = parseFloat($('#plannedExpenses').val()) || 0;
-
-            // Update progress bars
-            var incomeProgressBar1 = document.getElementById('incomeProgressBar1');
-            var incomeProgressBar2 = document.getElementById('incomeProgressBar2');
-            var expensesProgressBar1 = document.getElementById('expensesProgressBar1');
-            var expensesProgressBar2 = document.getElementById('expensesProgressBar2');
-            var totalIncome = summaryData.totalIncome;
-            var totalExpenses = summaryData.totalExpenses;
-
-            var incomePercentage1 = plannedIncome ? (totalIncome / plannedIncome * 100) : 0;
-            var incomePercentage2 = totalIncome ? (totalIncome / plannedIncome * 100) : 0; // Assuming second bar for a different aspect
-            var expensesPercentage1 = plannedExpenses ? (totalExpenses / plannedExpenses * 100) : 0;
-            var expensesPercentage2 = totalExpenses ? (totalExpenses / plannedExpenses * 100) : 0; // Assuming second bar for a different aspect
-
-            incomeProgressBar1.style.width = incomePercentage1 + '%';
-            incomeProgressBar1.setAttribute('aria-valuenow', incomePercentage1);
-            incomeProgressBar1.innerText = Math.round(incomePercentage1) + '%';
-
-            incomeProgressBar2.style.width = incomePercentage2 + '%';
-            incomeProgressBar2.setAttribute('aria-valuenow', incomePercentage2);
-            incomeProgressBar2.innerText = Math.round(incomePercentage2) + '%';
-
-            expensesProgressBar1.style.width = expensesPercentage1 + '%';
-            expensesProgressBar1.setAttribute('aria-valuenow', expensesPercentage1);
-            expensesProgressBar1.innerText = Math.round(expensesPercentage1) + '%';
-
-            expensesProgressBar2.style.width = expensesPercentage2 + '%';
-            expensesProgressBar2.setAttribute('aria-valuenow', expensesPercentage2);
-            expensesProgressBar2.innerText = Math.round(expensesPercentage2) + '%';*/
+        
             var filteredTransactions = transactions.filter(function(transaction) {
                 return moment(transaction.TransactionDate).month() == selectedMonth - 1;
             });
@@ -567,7 +681,27 @@
                     }
                 });
             }
+        
         }
+        function updateProgressBars() {
+            var plannedIncome = parseFloat($('#plannedIncome').val()) || 0;
+            var actualIncome = parseFloat($('#totalIncome').text()) || 0;
+
+            var plannedExpenses = parseFloat($('#plannedExpenses').val()) || 0;
+            var actualExpenses = parseFloat($('#totalExpenses').text()) || 0;
+
+            // Set widths of the bars
+            $('#plannedIncomeProgressBar').css('width', plannedIncome/1000 + 'px').text('Planned Income: Rs' + plannedIncome);
+            $('#actualIncomeProgressBar').css('width', actualIncome/1000 + 'px').text('Actual Income: Rs' + actualIncome);
+
+            $('#plannedExpensesProgressBar').css('width', plannedExpenses/1000 + 'px').text('Planned Expenses: Rs' + plannedExpenses);
+            $('#actualExpensesProgressBar').css('width', actualExpenses/1000 + 'px').text('Actual Expenses: Rs' + actualExpenses);
+        }
+
+
+
+
+
 
         // View all transactions
         $(document).on('click', '.BTN_View', function(event) {
@@ -617,6 +751,8 @@
             // Update summary and charts
             updateSummary(AllTransactions);
             updateCharts(AllTransactions);
+            updateProgressBars();
+            
         });
 
         // Edit transaction
@@ -702,6 +838,7 @@
         if (tblTransactions.length > 0) {
             $(".BTN_View").click();
         }
+        
     });
 </script>
 

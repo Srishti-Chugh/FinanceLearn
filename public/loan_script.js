@@ -1,22 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
     const applyLoanBtn = document.getElementById('apply-loan-btn');
-    const creditScoreBtn = document.getElementById('credit_score-btn');
+    //const creditScoreBtn = document.getElementById('credit_score-btn');
 
     const newLoanSection = document.getElementById('new-loan');
-    const creditScoreSection = document.getElementById('credit_score');
+    //const creditScoreSection = document.getElementById('credit_score');
 
     applyLoanBtn.addEventListener('click', () => {
+        console.log("Apply Loan Button Clicked");
         toggleSection(newLoanSection);
     });
 
-
-    creditScoreBtn.addEventListener('click', () => {
+    /*creditScoreBtn.addEventListener('click', () => {
+        console.log("Credit Score Button Clicked");
         toggleSection(creditScoreSection);
-    });
+    });*/
 
     function toggleSection(section) {
         newLoanSection.style.display = 'none';
-        creditScoreSection.style.display = 'none';
+        //creditScoreSection.style.display = 'none';
         section.style.display = 'block';
         section.scrollIntoView({ behavior: 'smooth' });
     }
@@ -251,7 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 function showInfo(infoId) {
     // Hide all loan info sections
-    const infoSections = document.querySelectorAll('.loan-info');
+    const infoSections = document.querySelectorAll('.loan-information');
     infoSections.forEach(section => {
         section.classList.add('hidden');
         section.classList.remove('visible');

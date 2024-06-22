@@ -15,7 +15,7 @@
     </div>
     <main>
         <section id="ongoing-loans">
-                <h2>Ongoing Loans</h2>
+                <h2 style="padding-left: 150px;">Ongoing Loans</h2>
                 <div id="loan-list"></div>
                 <div class="additional-info" id="additional-info">
                     <h3>Loans Distribution</h3>
@@ -23,23 +23,51 @@
                 </div>
             </div>
         </section>
-        <section id="loan-tips">
-            <div class="tips-container">
-                <h2>Things to Keep in Mind When Taking a Loan</h2>
-                <ul>
-                    <li>Understand the terms and conditions of the loan.</li>
-                    <li>Check your credit score before applying.</li>
-                    <li>Borrow only what you can repay.</li>
-                    <li>Compare interest rates from different lenders.</li>
-                    <li>Have a repayment plan in place.</li>
-                </ul>
-                <div class="buttons-container">
-                    <button id="apply-loan-btn">Add Loan Details</button>
-                    <button id="credit_score-btn">Find Your Credit Score</button>
+        <section id="apply-loan-section">
+            <div class="button-info-container">
+                <div class="button-info" style="padding-left: 80px;">
+                    <p style="padding-left: 10px;">Ready to take the next step? Adding your loan details enables us to tailor financial solutions that match your needs.<br>
+                         Share your loan information now and unlock a world of possibilities!</p>
+                    <button id="apply-loan-btn" style="width: 150px; padding-left: 10px;">Add Loan Details</button>
+                </div>
+                <div class="button-info" style="padding-left: 80px;">
+                    <p style="padding-left: 10px;">Understanding your credit score is paramount to financial planning.<br>
+                         Discover where you stand and how it shapes your loan options. <br>
+                         Find your credit score now to make informed decisions about your financial future!</p>
+                    <button id="credit_score-btn" style="width: 150px; padding-left: 10px;">Find Your Credit Score</button>
                 </div>
             </div>
         </section>
-        <section id="loan-info-section">
+        <section id="loan-tips">
+            <div class="tips-container">
+                <h2>Smart Steps Before You Borrow</h2>
+                <p>Before you embark on your loan journey, consider these essential tips to make informed decisions:</p>
+                <div class="card-row">
+                    <div class="card">
+                        <h3>Understand the terms and conditions</h3>
+                        <p>Thoroughly review the terms of the loan, including interest rates, fees, and repayment terms. Don't hesitate to ask questions if anything is unclear.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Assess your credit score</h3>
+                        <p>Your credit score plays a significant role in loan approval and interest rates. Check your score and take steps to improve it if necessary.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Borrow responsibly</h3>
+                        <p>Only borrow what you need and can comfortably repay. Avoid overextending yourself financially to prevent future stress.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Shop around for rates</h3>
+                        <p>Don't settle for the first loan offer you receive. Compare rates and terms from multiple lenders to find the best deal for your situation.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Create a repayment plan</h3>
+                        <p>Before taking out a loan, have a clear plan in place for repaying it. Consider your budget and other financial obligations to ensure you can meet your loan payments.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+        <section id="loan-information-section">
             
                 <div class="loan-toggles">
                     <button class="toggle-button active" onclick="showInfo('home-loan-info')">Home Loan</button>
@@ -48,10 +76,16 @@
                     <button class="toggle-button" onclick="showInfo('business-loan-info')">Business Loan</button>
                 </div>
                 <div class="container-wrapper">
-                    <div class="loan-info-container">
-                        <div id="home-loan-info" class="loan-info visible">
+                    <div class="loan-information-container">
+                        <div id="home-loan-info" class="loan-information visible">
                             <h2>Home Loan</h2>
-                            <p>Information about home loans...</p>
+                            <p class="spaced-paragraph">1. Fixed interest rates offer stability; adjustable rates can vary. Common loan terms are 15, 20, or 30 years.<br>
+
+                               2. Down payments typically range from 3% to 20%. Higher credit scores secure better rates.<br>
+                                
+                               3. Monthly payments include principal, interest, taxes & insurance. Closing costs usually range from 2% to 5%.<br>
+                                
+                               4. Pre-approval strengthens buying power. Benefits include equity building and potential tax deductions.</p>
                             <form id="home-loan-form" onsubmit="checkEligibility(event, 'home')">
                                 <h3>Eligibility Checker</h3>
                                 <label for="home-income">Annual Income:</label>
@@ -63,9 +97,17 @@
                                 <button type="submit">Check Eligibility</button>
                             </form>
                         </div>
-                        <div id="auto-loan-info" class="loan-info hidden">
+                        <div id="auto-loan-info" class="loan-information hidden">
                             <h2>Auto Loan</h2>
-                            <p>Information about auto loans...</p>
+                            <p class="spaced-paragraph">1. Auto loans have fixed interest rates and terms from 3 to 7 years.<br>
+
+                                2. Down payments are typically 10% to 20%. Higher credit scores secure better rates.<br>
+                                
+                                3. Monthly payments cover principal and interest. Additional costs include registration, insurance, and taxes.<br>
+                                
+                                4. Pre-approval clarifies your budget and strengthens your dealership negotiations. Benefits include possible tax deductions for business use.
+                                
+                                </p>
                             <form id="auto-loan-form" onsubmit="checkEligibility(event, 'auto')">
                                 <h3>Eligibility Checker</h3>
                                 <label for="auto-income">Annual Income:</label>
@@ -77,9 +119,15 @@
                                 <button type="submit">Check Eligibility</button>
                             </form>
                         </div>
-                        <div id="education-loan-info" class="loan-info hidden">
+                        <div id="education-loan-info" class="loan-information hidden">
                             <h2>Education Loan</h2>
-                            <p>Information about education loans...</p>
+                            <p class="spaced-paragraph">1. Education loans offer fixed or variable interest rates with terms typically ranging from 5 to 20 years.<br>
+
+                                2. Down payments are not typically required for education loans, but good credit history may lower interests.<br>
+                                
+                                3. Monthly payments typically cover loan principal and interest. Some loans offer deferred payment options until after graduation.<br>
+                                
+                                4. Pre-approval for an education loan helps plan your finances. Benefits include potential tax deductions on loan interest payments.</p>
                             <form id="education-loan-form" onsubmit="checkEligibility(event, 'education')">
                                 <h3>Eligibility Checker</h3>
                                 <label for="education-income">Annual Income:</label>
@@ -91,9 +139,15 @@
                                 <button type="submit">Check Eligibility</button>
                             </form>
                         </div>
-                        <div id="business-loan-info" class="loan-info hidden">
+                        <div id="business-loan-info" class="loan-information hidden">
                             <h2>Business Loan</h2>
-                            <p>Information about business loans...</p>
+                            <p class="spaced-paragraph">1. Business loans offer flexible terms, spanning 1- 25 yrs, with varied interest rates tailored to business needs.<br>
+
+                                2. Down payments fluctuate; collateral or strong credit history may secure better rates, enhancing accessibility.<br>
+                                
+                                3. Monthly payments cover principal and interest, with options for flexible repayment schedules to align with cash flows.<br>
+                                
+                                4. Pre-approval expedites financing, facilitating growth opportunities, with potential tax deductions on interest payments.</p>
                             <form id="business-loan-form" onsubmit="checkEligibility(event, 'business')">
                                 <h3>Eligibility Checker</h3>
                                 <label for="business-income">Annual Income:</label>
@@ -118,52 +172,97 @@
         </section>
         
 
-        <section id="new-loan" class="toggle-section">
-            <h2>Add Loan Details</h2>
-            <form id="loan-form">
-                <label for="loan-amount">Loan Amount:</label>
-                <input type="number" id="loan-amount" name="loanAmount" required>
-                <label for="loan-purpose">Loan Purpose:</label>
-                <input type="text" id="loan-purpose" name="loanPurpose" required>
-                <label for="loan-rate">Rate of Interest (%):</label>
-                <input type="number" id="loan-rate" name="loanRate" required>
-                <label for="loan-duration">Loan Duration (months):</label>
-                <input type="number" id="loan-duration" name="loanDuration" required>
-                <label for="amount-paid">Amount Paid Till Now:</label>
-                <input type="number" id="amount-paid" name="amountPaid" required>
-                <label for="loan-start-date">Loan Start Date:</label>
-                <input type="date" id="loan-start-date" name="loanStartDate" required>
-                <label for="employment-status">Employment Status:</label>
-                <input type="text" id="employment-status" name="employmentStatus" required>
-                <label for="monthly-income">Monthly Income:</label>
-                <input type="number" id="monthly-income" name="monthlyIncome" required>
-                <label for="years-employment">Years of Employment:</label>
-                <input type="number" id="years-employment" name="yearsEmployment" required>
-                <label for="amount-debt">Amount of Debt:</label>
-                <input type="number" id="amount-debt" name="amountDebt" required>
-                <label for="credit-score">Credit Score:</label>
-                <input type="number" id="credit-score" name="creditScore" required>
-                <label for="collateral-type">Collateral Type:</label>
-                <input type="text" id="collateral-type" name="collateralType" required>
-                <label for="collateral-value">Collateral Value:</label>
-                <input type="number" id="collateral-value" name="collateralValue" required>
-                <button type="submit">Submit</button>
-            </form>
-        
-        <section id="credit_score" class="toggle-section">
-            <h2>Find Your Credit Score</h2>
+        <section id="new-loan" class="toggle-section" >
+            <h2 style="padding-left: 100px;">Find Your Credit Score</h2>
             <div class="split-container">
-                <div class="left-half">
+                <div class="left-half" style="padding-left: 100px;">
                     <p>Your credit score is a critical factor in determining your eligibility for a loan and the interest rate you may receive. It is important to regularly check your credit score and maintain a good credit history.</p>
                 </div>
                 <div class="right-half">
-                    <form id="credit_score_form">
-                        <!-- credit score calculator form fields here -->
-                        <button type="submit">Calculate Credit Score</button>
-                    </form>
+                    <div class="circle-container">
+                        <div class="circle">
+                            <span class="circle-text">Poor credit<br><span class="centered-text">580-600</span></span>
+                            <span class="description">Payment History: Individuals in the poor credit category often have a history of missed or late payments, and their accounts may have been sent to collections.<br>
+                                Credit Utilization Ratio: Their credit utilization ratio tends to be high, often due to maxed-out credit accounts.<br>
+                                Length of Credit History: Their credit history may be relatively short or erratic.<br>
+                                Credit Mix: They may have limited or no variety in the types of credit accounts they hold.<br>
+                                New Credit: There may be a high number of recent credit inquiries or new accounts.</span>
+                        </div>
+                        <div class="circle">
+                            <span class="circle-text">Fair credit<br><span class="centered-text">601-669</span></span>
+                            <span class="description">Payment History: Individuals with fair credit may have some missed or late payments on their record.<br>
+                                Credit Utilization Ratio: While not excessively high, their credit utilization ratio can be moderate.<br>
+                                Length of Credit History: Typically, their credit history is shorter than desirable.<br>
+                                Credit Mix: They may have a limited variety in the types of credit accounts they hold.<br>
+                                New Credit: There might be a moderate number of recent credit inquiries or new accounts.</span>
+                        </div>
+                        <div class="circle">
+                            <span class="circle-text">Good credit<br><span class="centered-text">670-739</span></span>
+                            <span class="description">Payment History: Those with good credit generally have a consistent record of on-time payments.<br>
+                                Credit Utilization Ratio: Their credit utilization ratio is moderate, with well-managed credit balances.<br>
+                                Length of Credit History: They often have an adequate length of time with their credit accounts.<br>
+                                Credit Mix: There's a variety in the types of credit accounts they hold, such as credit cards, loans, and mortgages.<br>
+                                New Credit: They typically have limited recent credit inquiries or new accounts.</span>
+                        </div>
+                        <div class="circle">
+                            <span class="circle-text">Very Good credit<br><span class="centered-text">740-799</span></span>
+                            <span class="description">Payment History: Individuals with very good credit have a consistently strong record of on-time payments.<br>
+                                Credit Utilization Ratio: Their credit utilization ratio is low, with minimal credit balances carried.<br>
+                                Length of Credit History: They usually have a lengthy and well-established credit history.<br>
+                                Credit Mix: They demonstrate a wide variety in the types of credit accounts they hold, showcasing responsible credit management.<br>
+                                New Credit: There are rare recent credit inquiries or new accounts.</span>
+                        </div>
+                        <div class="circle">
+                            <span class="circle-text">Excellent credit<br><span class="centered-text">800 or above</span></span>
+                            <span class="description">Payment History: Those with excellent credit maintain an impeccable record of on-time payments.<br>
+                                Credit Utilization Ratio: Their credit utilization ratio is very low, with minimal credit balances carried.<br>
+                                Length of Credit History: They have a lengthy and well-established credit history.<br>
+                                Credit Mix: They hold a diverse mix of credit types, demonstrating responsible credit management.<br>
+                                New Credit: There are rare recent credit inquiries or new accounts.</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section>
+            
+            <div class="split-container">
+                <div class="left-half" style="padding-left: 100px; padding-top: 50px;">
+                    <h2 style="padding-left: 100px;">Add Loan Details</h2>
+                    <form id="loan-form">
+                        <label for="loan-amount">Loan Amount:</label>
+                        <input type="number" id="loan-amount" name="loanAmount" required>
+                        <label for="loan-purpose">Loan Purpose:</label>
+                        <input type="text" id="loan-purpose" name="loanPurpose" required>
+                        <label for="loan-rate">Rate of Interest (%):</label>
+                        <input type="number" id="loan-rate" name="loanRate" required>
+                        <label for="loan-duration">Loan Duration (months):</label>
+                        <input type="number" id="loan-duration" name="loanDuration" required>
+                        <label for="amount-paid">Amount Paid Till Now:</label>
+                        <input type="number" id="amount-paid" name="amountPaid" required>
+                        <label for="loan-start-date">Loan Start Date:</label>
+                        <input type="date" id="loan-start-date" name="loanStartDate" required>
+                        <label for="employment-status">Employment Status:</label>
+                        <input type="text" id="employment-status" name="employmentStatus" required>
+                        <label for="monthly-income">Monthly Income:</label>
+                        <input type="number" id="monthly-income" name="monthlyIncome" required>
+                        <label for="years-employment">Years of Employment:</label>
+                        <input type="number" id="years-employment" name="yearsEmployment" required>
+                        <label for="amount-debt">Amount of Debt:</label>
+                        <input type="number" id="amount-debt" name="amountDebt" required>
+                        <label for="credit-score">Credit Score:</label>
+                        <input type="number" id="credit-score" name="creditScore" required>
+                        <label for="collateral-type">Collateral Type:</label>
+                        <input type="text" id="collateral-type" name="collateralType" required>
+                        <label for="collateral-value">Collateral Value:</label>
+                        <input type="number" id="collateral-value" name="collateralValue" required>
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+                <div class="right-half" style="padding-top: 50px;">
+                    <img src="building.jpg"  class="image-class">
+                </div>
+
+        
+        
     </main>
     <div id="update-popup" class="popup">
         <form id="update-form">

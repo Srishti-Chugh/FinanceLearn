@@ -1,23 +1,79 @@
 .container {
-    max-width: 800px;
+    max-width: 1500px;
     margin: 0 auto;
-    padding: 20px;
-    background-color: #f8f9fa;
+    padding: 40px;
+    background-color: #e9f3fd;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: large;
+}
+header {
+    background-color: #022243;
+    text-decoration-color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.col-md-7{
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #9ed3ed;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);   
+    align-items: center;
+    justify-content: center;  
+    font-size: large; 
+}
+.row{
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #c0d7f3;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);   
+    align-items: center;
+    justify-content: center;
+    font-size: large;
+}
+.investmentSuggestions{
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #9fc7ef;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    justify-content: center;
+    font-size: large;
 }
 
 body {
     font-family: Arial, sans-serif;
-    background-color: white;
+    background-color: rgb(9, 84, 128);
     margin: 0;
     padding: 0;
+    
+}
+
+h5{
+    text-align: center;
+    margin: 20px 0;
+    color: #052b54;
+    font-size: large;
 }
 
 h2 {
     text-align: center;
     margin: 20px 0;
-    color: #007bff;
+    color: #052b54;
+    font-size: large;
+}
+h1 {
+    text-align: center;
+    margin: 20px 0;
+    color: #052b54;
+   
 }
 
 .tips-section {
@@ -25,6 +81,7 @@ h2 {
     margin: 0 auto;
     padding: 20px;
     background-color: #ffffff;
+    font-size: large;
     
 }
 
@@ -32,13 +89,14 @@ h2 {
     display: flex;
     align-items: flex-start;
     margin-bottom: 20px;
+    font-size: large;
 }
 
 .circle {
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background-color: #007bff;
+    background-color: #07386f;
     color: #ffffff;
     display: flex;
     align-items: center;
@@ -49,13 +107,16 @@ h2 {
 }
 
 .tip-text h5 {
-    color: #007bff;
+    color: #30049f;
     margin: 0 0 10px;
+    font-size: medium;
+    font-size: large;
 }
 
 .tip-text p {
     color: #343a40;
     margin: 0;
+    font-size: large;
 }
 
 /* Alternating padding */
@@ -72,17 +133,19 @@ h2 {
     align-items: center;
     justify-content: center;
     padding: 40px 20px;
-    background-color: white;
+    background-color: rgb(212, 234, 246);
 }
 
 .hero-text {
     flex: 1;
     padding: 20px;
+    font-size: larger;
 }
 
 .hero-text h1 {
     color: #007bff;
     margin-bottom: 20px;
+    font-size: large;
 }
 
 .hero-text p {
