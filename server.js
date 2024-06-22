@@ -118,7 +118,7 @@ app.post('/submitAnalysisData', async (req, res) => {
 
 // POST route to handle goal form submission
 app.post('/add-goal', async (req, res) => {
-    const { email, name, gender, age, address, income, expenses, amount, time, householdChores, goals } = req.body;
+    const { email, name, gender, age,  income, goals } = req.body;
 
     try {
         const user = await User.findOne({ email });
@@ -132,12 +132,12 @@ app.post('/add-goal', async (req, res) => {
             name,
             gender,
             age,
-            address,
+            //address,
             income,
-            expenses,
-            amount,
-            time,
-            householdChores,
+            //expenses,
+            //amount,
+            //time,
+            //householdChores,
             goals
         });
 

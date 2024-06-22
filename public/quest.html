@@ -27,27 +27,27 @@
                     <label for="age">Age:</label>
                     <input type="number" id="age" name="age" placeholder="Enter your age" required>
                 </div>
-                <div class="form-group">
+                <!--div class="form-group">
                     <label for="address">Residential Address:</label>
                     <input type="text" id="address" name="address" placeholder="Enter your address" required>
-                </div>
+            -->
                 <div class="form-group">
                     <label for="income">Total Income:</label>
                     <input type="number" id="income" name="income" placeholder="Enter your total income" required>
                 </div>
-                <div class="form-group">
+                <!--div class="form-group">
                     <label for="expenses">Total Spend on Household Chores:</label>
                     <input type="number" id="expenses" name="expenses" placeholder="Enter total spend on household chores" required>
-                </div>
-                <div class="form-group">
+                </div-->
+                <!--div class="form-group">
                     <label for="amount">Target Amount:</label>
                     <input type="number" id="amount" name="amount" placeholder="Enter target amount" required>
-                </div>
-                <div class="form-group">
+                </div-->
+                <!--div class="form-group">
                     <label for="time">Timeframe (months):</label>
                     <input type="number" id="time" name="time" placeholder="Enter timeframe in months" required>
-                </div>
-                <div class="checkbox-group">
+                </div-->
+                <!--div class="checkbox-group">
                     <label>Household Chores:</label><br>
                     <input type="checkbox" id="electricity" name="householdChores" value="Electricity Bill">
                     <label for="electricity">Electricity Bill</label><br>
@@ -55,8 +55,8 @@
                     <label for="water">Water Bill</label><br>
                     <input type="checkbox" id="gas" name="householdChores" value="Gas Bill">
                     <label for="gas">Gas Bill</label><br>
-                    <!-- Add more checkboxes as needed -->
-                </div>
+                    <!-- Add more checkboxes as needed >
+                </div-->
                 <div class="form-group">
                     <label for="goals">Goals:</label>
                     <select id="goals" name="goals" required>
@@ -65,6 +65,7 @@
                         <option value="housing schemes">housing related schemes</option>
                         <option value="educational schemes and loans">educational schemes and loans</option>
                         <option value="Women specific schemes">Women specific schemes</option>
+                        <option value="future planning for family based recommendations">Future Planning</option>
                     </select>
                 </div>
 
@@ -96,12 +97,12 @@
                 name: document.getElementById('name').value,
                 gender: document.getElementById('gender').value,
                 age: document.getElementById('age').value,
-                address: document.getElementById('address').value,
+                //address: document.getElementById('address').value,
                 income: document.getElementById('income').value,
-                expenses: document.getElementById('expenses').value,
-                amount: document.getElementById('amount').value,
-                time: document.getElementById('time').value,
-                householdChores: Array.from(document.querySelectorAll('input[name="householdChores"]:checked')).map(checkbox => checkbox.value),
+                //expenses: document.getElementById('expenses').value,
+                //amount: document.getElementById('amount').value,
+                //time: document.getElementById('time').value,
+                //householdChores: Array.from(document.querySelectorAll('input[name="householdChores"]:checked')).map(checkbox => checkbox.value),
                 goals: document.getElementById('goals').value
             };
             

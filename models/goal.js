@@ -9,12 +9,12 @@ const goalSchema = new mongoose.Schema({
     name: { type: String, required: true },
     gender: { type: String, required: true },
     age: { type: Number, required: true },
-    address: { type: String, required: true },
+    //address: { type: String, required: true },
     income: { type: Number, required: true },
-    expenses: { type: Number, required: true },
-    amount: { type: Number, required: true },
-    time: { type: Number, required: true },
-    householdChores: { type: [String], required: true },
+    //expenses: { type: Number, required: true },
+    //amount: { type: Number, required: true },
+    //time: { type: Number, required: true },
+    //householdChores: { type: [String], required: true },
     goals: { type: String, required: true }
 });
 
