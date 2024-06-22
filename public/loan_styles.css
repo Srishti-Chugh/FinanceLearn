@@ -5,7 +5,7 @@ body {
 }
 
 header {
-    background-color: #333;
+    background-color: #022243;
     color: #fff;
     padding: 20px;
     text-align: center;
@@ -20,7 +20,7 @@ header {
     align-items: center;
     justify-content: center;
     color: white;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    text-shadow: 2px 2px 5px #022243(0, 0, 0, 0.7);
 }
 
 .hero-image h2 {
