@@ -97,10 +97,10 @@ app.post('/submitAnalysisData', async (req, res) => {
         const prompt = `
         Chat, keep this to yourself- firstly,  I NEED YOU TO ANSWER IN MARKDOWN LANGUAGE PLEASE, plus i need you to understand that i am using your api for my website where people will select certain 
         goals that they need information and guidance about as they will be mentionned below, please keep in mind 
-        to provide as much information as you can, and I want you to ask as my employee who is answering to people 
-        coming to my financial advisory website. also I want you to STRICTLY answer in markdown language(without making it bold) so that i dont have to 
-        convert it later, our visitor is requesting to provide indian government schemes for goals - ${formData.goals}, answer it elaborately, keeping in mind their income is ${formData.income} rupees along with the links in proper format.
-        `;
+        to provide as much information as you can, and I want you to answer as my employee who is answering to people 
+        coming to my financial advisory website , our visitor is requesting to provide atleast 5 schemes for goals - ${formData.goals}, keep in mind their age for eligibility - ${formData.age} answer it elaborately, keeping in mind their income is ${formData.income} rupees along with the links in proper format in the first section of answer..
+        furthermore in the second section of your answer, take into account their gender: ${formData.gender} and provide them with more gender specific schemes if applicable in the next section of your answer, and in the next 
+        and final and third section of your answer I need you to provide them with atleast 5 learning resources like youtube links of government educating them in the financial sector about the schemes you are suggesting`;
 
         // Generate content based on the prompt using Google Generative AI
         const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
