@@ -64,7 +64,7 @@ function showInsuranceComparison(insuranceType) {
           <a href="#">Visit Website</a>
       </div>
       <!-- Add more comparison items as needed -->
-    `;
+    `; //abc
   } else if (insuranceType === "life") {
     // Add comparison items for life insurance
     insuranceComparisonSection.innerHTML = `
