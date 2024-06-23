@@ -265,7 +265,7 @@ button:hover {
 }
 
 .toggle-button.active {
-    background-color: #007bff;
+    background-color: #04478f;
     color: white;
 }
 
@@ -306,7 +306,7 @@ button:hover {
 .loan-information form button {
     margin-top: 20px;
     padding: 10px;
-    background-color: #007bff;
+    background-color: #042e5c;
     color: white;
     border: none;
     border-radius: 5px;
@@ -315,7 +315,7 @@ button:hover {
 }
 
 .loan-information form button:hover {
-    background-color: #0056b3;
+    background-color: #042e5c;
 }
 
 .results-container {
@@ -421,7 +421,7 @@ form {
 }
 
 button[type="submit"] {
-    background-color: #007bff; /* Blue background color */
+    background-color: #02274f; /* Blue background color */
     color: white; /* White text color */
     padding: 10px 20px; /* Add padding to the button */
     border: none; /* Remove border */
@@ -429,7 +429,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #032850; /* Darker blue on hover */
 }
 
 .circle-container {
