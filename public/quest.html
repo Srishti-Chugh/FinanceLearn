@@ -5,11 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration Form</title>
     <link rel="stylesheet" href="/queststyles.css">
+    <style>
+        .header {
+            background-color: navy;
+            height: 60px; /* Reduced height */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            color: white;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            color:white;
+        }
+
+        .menu-button {
+            font-size: 30px;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        .header-nav {
+            display: flex;
+        }
+
+        .header-nav-list {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header-nav-list li {
+            margin-left: 20px;
+        }
+
+        .header-nav-list a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px;
+        }
+
+        .header-nav-list a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
+    <header class="header">
+        <h1>Finance Compass</h1>
+        <nav class="header-nav">
+            <ul class="header-nav-list">
+                <li><a href="home.html">Back to Home</a></li>
+            </ul>
+        </nav>
+    </header>
     <div class="form-container">
-        <div class="container">
-            <h1>Fill your details</h1>
+        <div class="left-half" >
+            <img src="goalform.jpg" alt="Description of image" class="form-image">
+        </div>
+        <div class="right-half" >
+            <h1>Fill details for your Goal</h1>
             <form id="registrationForm" onsubmit="submitForm(event)">
                 <div class="form-group">
                     <label for="name">Name:</label>
@@ -27,27 +89,27 @@
                     <label for="age">Age:</label>
                     <input type="number" id="age" name="age" placeholder="Enter your age" required>
                 </div>
-                <!--div class="form-group">
+                <!--<div class="form-group">
                     <label for="address">Residential Address:</label>
                     <input type="text" id="address" name="address" placeholder="Enter your address" required>
-            -->
+                </div>-->
                 <div class="form-group">
                     <label for="income">Total Income:</label>
                     <input type="number" id="income" name="income" placeholder="Enter your total income" required>
                 </div>
-                <!--div class="form-group">
+                <!--<div class="form-group">
                     <label for="expenses">Total Spend on Household Chores:</label>
                     <input type="number" id="expenses" name="expenses" placeholder="Enter total spend on household chores" required>
-                </div-->
-                <!--div class="form-group">
+                </div>
+                <div class="form-group">
                     <label for="amount">Target Amount:</label>
                     <input type="number" id="amount" name="amount" placeholder="Enter target amount" required>
-                </div-->
-                <!--div class="form-group">
+                </div>
+                <div class="form-group">
                     <label for="time">Timeframe (months):</label>
                     <input type="number" id="time" name="time" placeholder="Enter timeframe in months" required>
-                </div-->
-                <!--div class="checkbox-group">
+                </div>
+                <div class="checkbox-group">
                     <label>Household Chores:</label><br>
                     <input type="checkbox" id="electricity" name="householdChores" value="Electricity Bill">
                     <label for="electricity">Electricity Bill</label><br>
@@ -55,17 +117,16 @@
                     <label for="water">Water Bill</label><br>
                     <input type="checkbox" id="gas" name="householdChores" value="Gas Bill">
                     <label for="gas">Gas Bill</label><br>
-                    <!-- Add more checkboxes as needed >
-                </div-->
+                    
+                </div>-->
                 <div class="form-group">
                     <label for="goals">Goals:</label>
                     <select id="goals" name="goals" required>
                         <option value="">Select a goal</option>
-                        <option value="retirement schemes">retirement schemes</option>
-                        <option value="housing schemes">housing related schemes</option>
-                        <option value="educational schemes and loans">educational schemes and loans</option>
+                        <option value="retirement schemes">Retirement schemes</option>
+                        <option value="housing schemes">Housing related schemes</option>
+                        <option value="educational schemes and loans">Educational schemes and loans</option>
                         <option value="Women specific schemes">Women specific schemes</option>
-                        <option value="future planning for family based recommendations">Future Planning</option>
                     </select>
                 </div>
 
