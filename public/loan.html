@@ -231,7 +231,16 @@
                         <label for="loan-amount">Loan Amount:</label>
                         <input type="number" id="loan-amount" name="loanAmount" required>
                         <label for="loan-purpose">Loan Purpose:</label>
-                        <input type="text" id="loan-purpose" name="loanPurpose" required>
+                        <select id="loan-purpose" class="form-control" onchange="checkOtherOption(this)">
+                                       
+                            <option value="">Select a goal</option>
+                            <option value="retirement schemes">retirement schemes</option>
+                            <option value="housing schemes">housing related schemes</option>
+                            <option value="educational schemes and loans">educational schemes and loans</option>
+                            <option value="women specific schemes">women specific schemes</option>
+                            
+                        </select>
+                        <!--input type="text" id="loan-purpose" name="loanPurpose" required-->
                         <label for="loan-rate">Rate of Interest (%):</label>
                         <input type="number" id="loan-rate" name="loanRate" required>
                         <label for="loan-duration">Loan Duration (months):</label>
