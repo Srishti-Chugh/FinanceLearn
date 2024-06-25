@@ -64,7 +64,7 @@ function showInsuranceComparison(insuranceType) {
           <a href="#">Visit Website</a>
       </div>
       <!-- Add more comparison items as needed -->
-    `; //abc
+    `;
   } else if (insuranceType === "life") {
     // Add comparison items for life insurance
     insuranceComparisonSection.innerHTML = `
@@ -174,3 +174,72 @@ accordionItems.forEach(item => {
     content.classList.toggle('active');
   });
 });
+
+document.getElementById("submit-btn").addEventListener("click", function() {
+  // Get user input from the form
+  var name = document.getElementById("name").value;
+  var age = document.getElementById("age").value;
+  var gender = document.getElementById("gender").value;
+  var location = document.getElementById("location").value;
+  var insuranceType = document.getElementById("insuranceType").value;
+  var coverage = document.getElementById("coverage").value;
+  var income = document.getElementById("income").value;
+  var budget = document.getElementById("budget").value;
+  var coverageAmount = document.getElementById("coverageAmount").value;
+  var policyTerm = document.getElementById("policyTerm").value;
+  var deductible = document.getElementById("deductible").value;
+  
+  // Perform calculations based on user input
+  var premium = calculatePremium(income, budget, coverageAmount, policyTerm, deductible);
+  var advice = generateAdvice(age, income, coverage);
+  
+  // Display the investment advice and premium calculation
+  document.getElementById("advice-section").innerHTML = "<h3>Premium: Rs." + premium + " per month</h3><p><strong>What is a Premium?</strong> The premium is the amount of money that you pay periodically (monthly, quarterly, or annually) to keep your insurance policy active. In this case, the premium is calculated on a monthly basis.</p><h4>Advice: " + advice + "</h4>";
+  document.getElementById("advice-section").style.display = "block";
+});
+
+// Define functions for premium calculation and investment advice generation
+function calculatePremium(income, budget, coverageAmount, policyTerm, deductible) {
+  // Assuming a very basic premium calculation for demonstration purposes
+  var premium = 0;
+  if (income === "below_20k") {
+      premium = 100;
+  } else if (income === "20k_50k") {
+      premium = 200;
+  } else if (income === "50k_100k") {
+      premium = 300;
+  } else if (income === "above_100k") {
+      premium = 400;
+  }
+  
+  // Further adjust the premium based on coverage amount, policy term, and deductible
+  // This is a simplified example and should be replaced with actual logic
+  
+  return premium;
+}
+
+function generateAdvice(age, income, coverage) {
+  var advice = "";
+
+  // Check age and income
+  if (age < 30 && income === "below_20k") {
+      advice += "Since you're young and have a modest income, it's crucial to prioritize building a safety net with basic insurance coverage. Opt for plans with lower premiums and essential coverage to ensure financial security in case of unexpected events.";
+  } else if (age >= 30 && income === "above_100k") {
+      advice += "Considering your stable income and age, you're in a favorable position to invest in comprehensive insurance. Focus on policies that offer extensive coverage and additional benefits tailored to your specific needs and circumstances.";
+  } else {
+      advice += "Based on your inputs, it's recommended to consult with an insurance advisor for personalized advice that aligns with your financial situation and future goals.";
+  }
+
+  // Add coverage-specific advice
+  if (coverage === "family") {
+      advice += " For family coverage, prioritize plans that offer comprehensive health benefits and financial protection for your loved ones. Look for policies that include coverage for medical emergencies, hospitalization, and critical illnesses, ensuring the well-being of your entire family.";
+  } else if (coverage === "chronic") {
+      advice += " If you're considering chronic illness coverage, ensure the policy includes provisions for long-term care and specialized treatments. Look for plans that provide coverage for ongoing medical expenses and access to necessary treatments without significant financial burden.";
+  } else if (coverage === "full") {
+      advice += " If you're opting for full coverage, review the policy details carefully to understand exclusions and limitations. Look for comprehensive plans that cover a wide range of medical services, including preventive care, specialist consultations, and hospitalization, ensuring comprehensive protection against unforeseen health issues.";
+  } else if (coverage === "basic") {
+      advice += " For basic coverage, focus on plans that provide essential protection against major risks without unnecessary frills. Prioritize coverage for critical illnesses, accidents, and hospitalization, ensuring that you have adequate financial protection in case of unexpected medical emergencies.";
+  }
+
+  return advice;
+}

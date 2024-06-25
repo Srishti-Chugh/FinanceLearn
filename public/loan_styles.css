@@ -4,11 +4,100 @@ body {
     padding: 0;
 }
 
-header {
-    background-color: #022243;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
+.header {
+    background-color: navy;
+    height: 60px; /* Reduced height */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    color: white;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.menu-button {
+    background-color: #333; /* Dark background color */
+    color: white; /* White text color */
+    border: none; /* No border */
+    padding: 10px 15px; /* Some padding */
+    text-align: center; /* Centered text */
+    text-decoration: none; /* No underline */
+    display: inline-block; /* Inline-block display */
+    font-size: 16px; /* Font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 5px; /* Rounded corners */
+    margin: 5px; /* Some margin */
+    width:40px;
+    margin-left: 40px;
+}
+
+/* Styling for hover effect */
+.menu-button:hover {
+    background-color: #555; /* Darker background on hover */
+    color: white; /* Ensure text color stays white */
+}
+
+.header-nav {
+    display: flex;
+}
+
+.header-nav-list {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.header-nav-list li {
+    margin-left: 20px;
+}
+
+.header-nav-list a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px;
+}
+
+.header-nav-list a:hover {
+    text-decoration: underline;
+}
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #053d96;
+    overflow-x: hidden;
+    transition: width 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: aliceblue;
+    display: block;
+    transition: color 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
 }
 
 .hero-image {
@@ -61,7 +150,7 @@ header {
 .buttons-container button {
     margin: 0 0.5em;
     padding: 0.5em 1em;
-    background-color: #4CAF50;
+    background-color: #053d96;
     color: white;
     border: none;
     cursor: pointer;
@@ -69,7 +158,7 @@ header {
 }
 
 .buttons-container button:hover {
-    background-color: #45a049;
+    background-color: #053d96;
 }
 
 main {
@@ -112,7 +201,7 @@ form input {
 form button {
     margin-top: 1em;
     padding: 0.5em;
-    background-color: #4CAF50;
+    background-color: #053d96;
     color: white;
     border: none;
     cursor: pointer;
@@ -120,7 +209,7 @@ form button {
 }
 
 form button:hover {
-    background-color: #45a049;
+    background-color: #053d96;
 }
 
 
@@ -140,7 +229,7 @@ input[type="text"] {
 }
 
 button {
-    background-color: #4CAF50;
+    background-color: #053d96;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -150,7 +239,7 @@ button {
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #053d96;
 }
 #loan-list {
     grid-column: 1;
@@ -206,7 +295,7 @@ button:hover {
 }
 
 .update-btn {
-    background-color: #28a745;
+    background-color: #053d96;
     color: white;
     padding: 5px 10px;
     border: none;
@@ -216,7 +305,7 @@ button:hover {
 }
 
 .update-btn:hover {
-    background-color: #218838;
+    background-color: #053d96;
 }
 
 #ongoing-loans {

@@ -1,0 +1,149 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.header {
+    background-color: navy;
+    height: 60px; /* Reduced height */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    color: white;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.menu-button {
+    font-size: 30px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.header-nav {
+    display: flex;
+}
+
+.header-nav-list {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.header-nav-list li {
+    margin-left: 20px;
+}
+
+.header-nav-list a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px;
+}
+
+.header-nav-list a:hover {
+    text-decoration: underline;
+}
+
+.task-of-the-day {
+    background-color: #f0f0f0;
+    padding: 30px 0;
+    text-align: center;
+}
+
+.task-of-the-day h2 {
+    margin-bottom: 20px;
+}
+.category-section {
+    margin-top: 50px;
+}
+
+.category-section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.card {
+    width: 250px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.card img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+/* Styling for Read Case Study Buttons */
+
+.read-case-study-btn {
+    background-color: white;
+    color: navy;
+    border: 2px solid navy;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: left; /* Align text to the left */
+    display: inline-block; /* Ensures the button does not stretch across the full width */
+    margin-top: 10px; /* Adds some spacing at the top */
+    cursor: pointer;
+    margin-left: 100px;
+}
+
+.read-case-study-btn:hover {
+    background-color: navy;
+    color: white;
+}
+
+.case-study-section {
+    display: none;
+    margin-top: 20px;
+}
+
+.case-study-section h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.case-study-section p {
+    margin-bottom: 10px;
+}
+.faq-section {
+    margin-top: 50px;
+}
+
+.accordion-header {
+    background-color: #f0f0f0;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.accordion-content {
+    display: none;
+    padding: 15px;
+}
+
+.accordion-content p {
+    margin: 0;
+}

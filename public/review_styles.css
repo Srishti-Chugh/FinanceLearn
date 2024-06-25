@@ -10,6 +10,54 @@ body {
     margin: auto;
     overflow: hidden;
 }
+.header {
+    background-color: navy;
+    height: 60px; /* Reduced height */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    color: white;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.menu-button {
+    font-size: 30px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.header-nav {
+    display: flex;
+}
+
+.header-nav-list {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.header-nav-list li {
+    margin-left: 20px;
+}
+
+.header-nav-list a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px;
+}
+
+.header-nav-list a:hover {
+    text-decoration: underline;
+}
 
 h1, h2 {
     text-align: center;
@@ -57,4 +105,8 @@ button:hover {
 #reviewsList {
     list-style-type: none;
     padding: 0;
+}
+.bullet-points {
+    list-style-type: disc;
+    margin-left: 20px;
 }

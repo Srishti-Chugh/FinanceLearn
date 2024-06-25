@@ -1,179 +1,173 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Learning Platform</title>
+    <link rel="stylesheet" href="landing_styles.css">
+    <script defer src="landing_scripts.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Financial Learning Platform</h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#goals">Goal Setting</a></li>
+                    <li><a href="#loans">Loans</a></li>
+                    <li><a href="#budgeting">Budgeting</a></li>
+                    <li><a href="#stocks">Stock Prediction</a></li>
+                    <li><a href="#insurance">Insurance Comparison</a></li>
+                    <li><a href="#resources">Learning Resources</a></li>
+                    <li><a href="#reviews">User Reviews</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <button class="login">Login</button>
+                    <button class="signup">Sign Up</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="container">
+            <h2>Empower Your Financial Future</h2>
+            <p>Set goals, get personalized investment recommendations, and more.</p>
+            <a href="#goals" class="cta-button">Get Started</a>
+        </div>
+    </section>
+
+    <section id="goals" class="content-section">
+        <div class="container">
+            <h2>Goal Setting</h2>
+            <p>Set your financial goals and get personalized recommendations to achieve them.</p>
+        </div>
+    </section>
+
+    <section id="loans" class="content-section">
+        <div class="container">
+            <h2>Loan Management</h2>
+            <p>Select loan types, amounts, durations, and manage your loans efficiently.</p>
+        </div>
+    </section>
+
+    <section id="budgeting" class="content-section">
+        <div class="container">
+            <h2>Budgeting</h2>
+            <p>Create and manage monthly budgets to keep track of your spending.</p>
+        </div>
+    </section>
+
+    <section id="stocks" class="content-section">
+        <div class="container">
+            <h2>Stock Prediction</h2>
+            <p>Predict stock performance and make informed investment decisions.</p>
+        </div>
+    </section>
+
+    <section id="insurance" class="content-section">
+        <div class="container">
+            <h2>Insurance Comparison</h2>
+            <p>Compare insurance schemes and find the best options for you.</p>
+        </div>
+    </section>
+
+    <section id="resources" class="content-section">
+        <div class="container">
+            <h2>Learning Resources</h2>
+            <p>Access comprehensive learning resources to enhance your financial knowledge.</p>
+        </div>
+    </section>
+
+    <section id="reviews" class="content-section">
+        <div class="container">
+            <h2>User Reviews</h2>
+            <p>Read reviews from other users and share your own experiences.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Financial Learning Platform. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>  -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Login & Registration</title>
+    <title>Financial Learning Platform</title>
+    <link rel="stylesheet" href="index_styles.css">
+    <script defer src="index_scripts.js"></script>
 </head>
 <body>
-<div class="wrapper">
-    <nav class="nav">
-        <div class="nav-logo">
-            <p>Finance Compass</p>
-        </div>
-        <div class="nav-menu" id="navMenu">
-            <ul>
-                <!-- The # symbol is used as the value of the href attribute. When a user clicks on this link, it typically doesn't navigate to a different page or location; instead, it refers to the current page itself. In other words, clicking on this link doesn't cause any navigation action to occur. -->
-                <li><a href="#" class="link active">Home</a></li>
-                <li><a href="dashboard.html" class="link">Services</a></li>
+    <header class="header">
+        <!--<button class="menu-button" onclick="openNav()">☰</button>-->
+        <h1 style="text-align: left;padding-left: 50px;">Finance Compass</h1>
+        <nav class="header-nav">
+            <ul class="header-nav-list">
+                <li><a href="login.html">Login</a></li>
+                <li><a href="login.html">Sign Up</a></li>
             </ul>
-        </div>
-        <div class="nav-button">
-            <button class="btn white-btn" id="loginBtn" onclick="toggleForm('login')">Sign In</button>
-            <button class="btn" id="registerBtn" onclick="toggleForm('register')">Sign Up</button>
-        </div>
-        <div class="nav-menu-btn">
-            <i class="bx bx-menu" onclick="myMenuFunction()"></i>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
-    <div class="form-box">
-        <div class="login-container" id="login">
-            <div class="top">
-                <span>Don't have an account? <a href="#" onclick="toggleForm('register')">Sign Up</a></span>
-                <header>Login</header>
-            </div>
-            <form id="loginForm" onsubmit="submitForm(event, 'login')">
-                <div class="input-box">
-                    <input type="text" class="input-field" placeholder="Username or Email" name="usernameOrEmail" id="usernameInput">
-                    <i class="bx bx-user"></i>
-                </div>
-                <div class="input-box">
-                    <input type="password" class="input-field" placeholder="Password" name="password">
-                    <i class="bx bx-lock-alt"></i>
-                </div>
-                <div class="input-box">
-                    <input type="submit" class="submit" value="Sign In">
-                </div>
-            </form>
-            <div class="two-col">
-                <div class="one">
-                    <input type="checkbox" id="login-check">
-                    <label for="login-check"> Remember Me</label>
-                </div>
-                <div class="two">
-                    <label><a href="forgotpassword.html">Forgot password?</a></label>
-                </div>
-            </div>
-        </div>
-
-        <div class="register-container" id="register">
-            <div class="top">
-                <span>Have an account? <a href="#" onclick="toggleForm('login')">Login</a></span>
-                <header>Sign Up</header>
-            </div>
-            <form id="registerForm" onsubmit="submitForm(event, 'register')">
-                <div class="two-forms">
-                    <div class="input-box">
-                        <input type="text" class="input-field" placeholder="Firstname" name="firstname">
-                        <i class="bx bx-user"></i>
-                    </div>
-                    <div class="input-box">
-                        <input type="text" class="input-field" placeholder="Lastname" name="lastname">
-                        <i class="bx bx-user"></i>
-                    </div>
-                </div>
-                <div class="input-box">
-                    <input type="text" class="input-field" placeholder="Email" name="email">
-                    <i class="bx bx-envelope"></i>
-                </div>
-                <div class="input-box">
-                    <input type="password" class="input-field" placeholder="Password" name="password">
-                    <i class="bx bx-lock-alt"></i>
-                </div>
-                <div class="input-box">
-                    <input type="submit" class="submit" value="Register">
-                </div>
-            </form>
-            <div class="two-col">
-                <div class="one">
-                    <input type="checkbox" id="register-check">
-                    <label for="register-check"> Remember Me</label>
-                </div>
-                <div class="two">
-                    <label><a href="#">Terms & conditions</a></label>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    function myMenuFunction() {
-        var i = document.getElementById("navMenu");
-        if (i.className === "nav-menu") {
-            i.className += " responsive";
-        } else {
-            i.className = "nav-menu";
-        }
-    }
-
-    function toggleForm(form) {
-        var a = document.getElementById("loginBtn");
-        var b = document.getElementById("registerBtn");
-        var x = document.getElementById("login");
-        var y = document.getElementById("register");
-
-        if (form === 'login') {
-            x.style.left = "4px";
-            y.style.right = "-520px";
-            a.className += " white-btn";
-            b.className = "btn";
-            x.style.opacity = 1;
-            y.style.opacity = 0;
-        } else if (form === 'register') {
-            x.style.left = "-510px";
-            y.style.right = "5px";
-            a.className = "btn";
-            b.className += " white-btn";
-            x.style.opacity = 0;
-            y.style.opacity = 1;
-        }
-    }
-
-    
-    async function submitForm(event, formType) {
-    event.preventDefault();
-    
-    const form = formType == 'login' ? document.getElementById('loginForm') : document.getElementById('registerForm');
-    const formData = new FormData(form);
-    const formObject = {};
-    formData.forEach((value, key) => {
-        formObject[key] = value;
-    });
-
-    try {
-        const response = await fetch(`/${formType}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formObject)
-        });
-
-        const data = await response.json();
-        var input=document.getElementById("usernameInput").value;
-        console.log('Response data:', data); // Add logging here
-        alert(data.message);
-    
-        if (response.status == 201 && formType == 'login') {
+    <section id="hero">
+        <div class="hero-text">
+            <h2 class="typing-text"></h2>
             
-            //sessionStorage.setItem('username', data.usernameOrEmail);
-            sessionStorage.setItem('username', input);
-            console.log('Username stored in sessionStorage:', input); // Add logging here
-            
-            // Redirect to home page after successful login
-            window.location.href = '/home.html';
-        }
-        
-    } catch (error) {
-        console.error('Error:', error);
-    }
-}
+        </div>
+        <div class="hero-image">
+            <img src="landing_img.png" alt="Financial planning">
+        </div>
+    </section>
 
-</script>
+    
 
+    <section class="info-section">
+        <div class="info-content">
+            <div class="info-text">
+                <h2>Your Personalized Financial Guide</h2>
+                <p>With Gemini, Finance Compass brings you personalized financial suggestions crafted to fit your unique needs and goals. Our advanced algorithms analyze your financial situation, preferences, and objectives to provide you with actionable insights and recommendations.</p>
+            </div>
+            <div class="info-image">
+                <img src="feature1.png" alt="Image 1">
+            </div>
+        </div>
+    </section>
+
+    <section class="info-section alternate">
+        <div class="info-content">
+            <div class="info-image">
+                <img src="feature2.png" alt="Image 2">
+            </div>
+            <div class="info-text">
+                <h2>Visualize Your Finances with Clarity</h2>
+                <p>Stay on top of your finances with Finance Compass's Graphical Budget Tracker. This powerful tool transforms your income and expenses into clear, easy-to-understand visual representations.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="info-section">
+        <div class="info-content">
+            <div class="info-text">
+                <h2>Community Voices: Hear from Your Peers</h2>
+                <p>Join the conversation in our Community Reviews section, where users like you share their personal financial journeys, successes, and challenges. Discover honest feedback and diverse perspectives on various financial products and strategies.</p>
+            </div>
+            <div class="info-image">
+                <img src="feature3.png" alt="Image 3">
+            </div>
+        </div>
+    </section>
+
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 FinanceLearn. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>

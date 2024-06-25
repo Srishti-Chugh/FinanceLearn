@@ -5,35 +5,62 @@ body {
   
 }
 
-header {
+.site-header {
+  background-color: navy;
+  height: 60px; /* Reduced height */
   display: flex;
   align-items: center;
-  background-color: #022243;
+  justify-content: space-between;
+  padding: 0 20px;
   color: white;
-  padding: 1em;
 }
 
-header h1 {
+.site-header h1 {
   margin: 0;
-  flex-grow: 1;
+  font-size: 24px;
 }
 
 #menuButton {
+  font-size: 30px;
   background: none;
   border: none;
   color: white;
-  font-size: 1.5em;
   cursor: pointer;
+}
+
+.header-nav {
+  display: flex;
+}
+
+.header-nav-list {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.header-nav-list li {
+  margin-left: 20px;
+}
+
+.header-nav-list a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 10px;
+}
+
+.header-nav-list a:hover {
+  text-decoration: underline;
 }
 
 .side-nav {
   height: 100%;
   width: 0;
   position: fixed;
-  z-index: 1;
   top: 0;
   left: 0;
-  background-color: #022243;
+  background-color: navy;
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 60px;
@@ -43,13 +70,13 @@ header h1 {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 25px;
-  color: #818181;
+  color: white;
   display: block;
   transition: 0.3s;
 }
 
 .side-nav a:hover {
-  color: #f1f1f1;
+  background-color: #575757;
 }
 
 .side-nav .closebtn {
@@ -59,14 +86,13 @@ header h1 {
   font-size: 36px;
   margin-left: 50px;
 }
-
 .hero {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(12, 1fr);
   gap: 10px;
   padding: 20px;
-  background-color: #fdf5e6; /* Cream background color */
+  background-color: #f0ece660; /* Cream background color */
   height: 80vh;
   margin-bottom: 40px;
 }
@@ -89,7 +115,7 @@ header h1 {
   display: flex;
   flex-direction: column;
   text-align: center;
-  background-color: #fdf5e6; /* Cream background color */
+  background-color: #f0ece660; /* Cream background color */
   padding: 20px; /* Keep padding for text card */
 }
 
@@ -268,7 +294,7 @@ input[type="submit"]:hover {
 }
 
 .accordion {
-  max-width: 500px;
+  max-width: 800px;
   padding-left: 100px;
   margin-right: auto;
   padding-bottom: 150px;

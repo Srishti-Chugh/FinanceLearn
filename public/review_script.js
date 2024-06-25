@@ -65,6 +65,9 @@ function addReviewToList(email, category, review) {
         <p><strong>Review:</strong> ${review}</p>
     `;
     reviewsList.appendChild(reviewItem);
+    // Create and append horizontal line
+    const hr = document.createElement('hr');
+    reviewsList.appendChild(hr);
 }
 
 // Attach event listener for submitting reviews

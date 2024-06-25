@@ -1,3 +1,10 @@
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
 document.addEventListener('DOMContentLoaded', () => {
     const applyLoanBtn = document.getElementById('apply-loan-btn');
     //const creditScoreBtn = document.getElementById('credit_score-btn');
@@ -33,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const newLoan = {
             loanAmount: document.getElementById('loan-amount').value,
-            loanPurpose: document.getElementById('loan-purpose').value,
+            loanPurpose:document.getElementById('loan-purpose').value,
             loanRate: document.getElementById('loan-rate').value,
             loanDuration: document.getElementById('loan-duration').value,
             amountPaid: document.getElementById('amount-paid').value,

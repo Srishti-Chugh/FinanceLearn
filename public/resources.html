@@ -2,49 +2,137 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="home_styles.css">
-    <style>
-        /* Override the background property */
-        body {
-            background-image: url('home.png');
-            /* Add any other styling you want */
-        }
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0; /* Optional: Background color */
-        }
-        .video-row {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px; /* Optional: Add some space between the videos */
-        }
-        iframe {
-            width: 100%;
-            max-width: 560px; /* Maintain aspect ratio */
-            height: 315px; /* Maintain aspect ratio */
-        }
-    </style>
-    <!-- Include the same CSS file -->
-
-    <title>Home Page</title>
-    
+    <title>Finance Compass</title>
+    <link rel="stylesheet" href="resources_styles.css">
 </head>
 <body>
-    
-        <!-- Four YouTube videos arranged in one row -->
-        <div class="video-row">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/watch?v=Sr5dQN55-hk&list=PLR4JAq9yunevjflCs6P3P_59k0kQhx4Ti&index=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/watch?v=4ALfPDaUMdk&list=PL84LBPuqT31maaV50Dnf-z99tbc58Tb7S&pp=iAQB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>            
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/watch?v=YtG1-CXuQ54&list=PL84LBPuqT31l5BRhM7AvhTwv3d-tFNAft&pp=iAQB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/1qaYUrASXgs?si=Zb6jMdyOHJupV_Wp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div> 
+    <header class="header">
+        <!--<button class="menu-button" onclick="openNav()">☰</button>-->
+        <h1 style="text-align: left;padding-left: 50px;">Finance Compass</h1>
+        <nav class="header-nav">
+            <ul class="header-nav-list">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="reviews.html">Community</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="task-of-the-day">
+        <div class="container">
+            <h2>Tip of the Day</h2>
+            <p id="task-details"></p>
+        </div>
     </div>
+    <section class="quiz-intro-section" style="padding-bottom: 50px;background-color: rgb(220, 236, 251);">
+        <div class="container">
+            <h2>Test Your Financial Knowledge</h2>
+            <p>Take our quiz to test your knowledge on financial planning, investing, and debt management. This is a great way to gauge your understanding and learn more about managing your finances effectively.</p>
+            <button class="google-form-btn" style="background-color: white;color: navy; border: 2px solid navy;border-radius: 5px;" onclick="openGoogleForm()">Take the Quiz</button>
+        </div>
+    </section>
+
+    <section class="category-section">
+        <h2 style="padding-left: 50px;">Budgeting & Financial Planning:</h2>
+        <div class="card-container">
+            <div class="card">
+                <img src="blog1.png" alt="Budgeting Blog 1">
+                <p>Budgeting: Taking Control of Your Finances:Budgeting is indeed a significant procedure so that people can be prudent in their spending. </p>
+            </div>
+            <div class="card">
+                <img src="blog2.png" alt="Budgeting Blog 2">
+                <p>From Financial Insecurity to Financial Freedom:There is often a huge difference between what we think we want and what we really want.</p>
+            </div>
+            <div class="card">
+                <img src="blog3.png" alt="Budgeting Blog 3">
+                <p>According to The Motley Fool, the average consumer visits Target 43 times per year, spending around $50 per visit. </p>
+            </div>
+        </div>
+        <button class="read-case-study-btn">Read Case Study</button>
+        <div class="case-study-section" style="background-color: rgb(220, 235, 249); padding-left: 100px; padding-right: 100px;">
+            <h3>Case Study 1: "From Debt to Savings"</h3>
+            <p><strong>Scenario:</strong> Sarah, a recent college graduate, was struggling with student loan debt and credit card payments. She wanted to start saving for emergencies and future goals but didn't know where to start.</p>
+            <p><strong>Solution:</strong> Sarah created a detailed budget, prioritizing essential expenses and allocating a portion of her income towards debt repayment and savings goals. She implemented strategies like cutting unnecessary expenses, negotiating lower interest rates on loans, and increasing her income through part-time work.</p>
+            <p><strong>Outcome:</strong> Over time, Sarah successfully paid off her debts and built up an emergency fund. She also started investing for retirement and achieving her long-term financial goals, thanks to disciplined budgeting and financial planning.</p>
+        </div>
+    </section>
+    <section class="category-section">
+        <h2 style="padding-left: 50px;">Investing & Wealth Management:</h2>
+        <div class="card-container">
+            <div class="card">
+                <img src="blog4.png" alt="Investing Blog 1">
+                <p>Renowned British investor Jeremy Grantham said recently, “The trouble with this bubble is it’s an everything bubble.”</p>
+            </div>
+            <div class="card">
+                <img src="blog5.png" alt="Investing Blog 2">
+                <p>the most controversial theories in finance is that of diversification.You don’t put all of your capital into a limited number of stocks, rather a larger number.</p>
+            </div>
+            <div class="card">
+                <img src="blog6.png" alt="Investing Blog 3">
+                <p>We all want to increase our wealth.For some, it’s a matter of survival.For others, it’s a quest for long-term security.</p>
+            </div>
+        </div>
+        <button class="read-case-study-btn">Read Case Study</button>
+        <div class="case-study-section" style="background-color: rgb(220, 235, 249);padding-left: 100px; padding-right: 100px;">
+            <h3>Case Study 2: "The Power of Compound Interest"</h3>
+            <p><strong>Scenario:</strong> John, a young professional, wanted to build wealth for his future but had limited knowledge of investing. He was hesitant to start due to fears of market volatility and uncertainty.</p>
+            <p><strong>Solution:</strong> John learned about the concept of compound interest and the importance of long-term investing. He diversified his investment portfolio by allocating funds into low-cost index funds, individual stocks, and real estate investment trusts (REITs). John also automated his contributions to take advantage of dollar-cost averaging.</p>
+            <p><strong>Outcome:</strong> Over the years, John's investments grew steadily, thanks to the power of compound interest. Despite market fluctuations, his diversified portfolio weathered downturns, and he continued to invest consistently. John achieved his financial goals of buying a home, funding his children's education, and building a substantial retirement nest egg.</p>
+        </div>
+    </section>
+    
+    <section class="category-section">
+        <h2 style="padding-left: 50px;">Loans & Debt Management:</h2>
+        <div class="card-container">
+            <div class="card">
+                <img src="blog7.png" alt="Debt Management Blog 1">
+                <p>Navy Federal Credit Union, the largest credit union, offers a unique loan option for its members — pledge loans.</p>
+            </div>
+            <div class="card">
+                <img src="blog8.png" alt="Debt Management Blog 2">
+                <p>Managing debt can feel like juggling flaming torches while riding a unicycle. It’s a balancing act that requires focus, planning, and a bit of courage</p>
+            </div>
+            <div class="card">
+                <img src="blog9.png" alt="Debt Management Blog 3">
+                <p>— Quick2Lend is a legitimate online lending service that connects borrowers with lenders, operating within the financial industry and offering personal loans </p>
+            </div>
+        </div>
+        <button class="read-case-study-btn">Read Case Study</button>
+        <div class="case-study-section" style="background-color: rgb(220, 235, 249);padding-left: 100px; padding-right: 100px;">
+            <h3>Case Study 3: "Breaking the Cycle of Debt"</h3>
+            <p><strong>Scenario:</strong> Mark and Lisa, a married couple, were drowning in credit card debt and struggling to make ends meet. They felt overwhelmed by high-interest rates and minimum monthly payments, which seemed to trap them in a cycle of debt.</p>
+            <p><strong>Solution:</strong> Mark and Lisa sought professional help from a certified financial planner who helped them create a debt repayment plan. They consolidated their high-interest debts into a lower-interest personal loan, negotiated with creditors for reduced settlement amounts, and implemented a strict budget to control spending.</p>
+            <p><strong>Outcome:</strong> With discipline and perseverance, Mark and Lisa gradually paid off their debts and improved their credit scores. They adopted healthier financial habits, such as tracking expenses, avoiding impulse purchases, and building an emergency fund. Mark and Lisa successfully broke free from the cycle of debt and regained control of their financial future.</p>
+        </div>
+    </section>
+    <section class="faq-section" style="padding-bottom: 100px;">
+        <h2 style="padding-left: 100px;padding-top: 30px;">Frequently Asked Questions</h2>
+        <div class="accordion">
+            <div class="accordion-item">
+                <div class="accordion-header" style="background-color: rgba(31, 71, 180, 0.674);color:white; padding-left: 100px;">Question 1: What is budgeting?</div>
+                <div class="accordion-content"style="background-color: rgb(220, 235, 249);padding-left: 100px;" >
+                    <p>Budgeting is the process of creating a plan to spend your money. It involves setting financial goals, tracking expenses, and making informed decisions about how to allocate funds.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header"style="background-color: rgba(31, 71, 180, 0.674);color:white; padding-left: 100px;">Question 2: How can I start investing?</div>
+                <div class="accordion-content"style="background-color: rgb(220, 235, 249);padding-left: 100px;">
+                    <p>Starting to invest can seem daunting, but it's important to begin early to take advantage of compound interest. Begin by educating yourself about different investment options, setting clear financial goals, and seeking guidance from a financial advisor.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header" style="background-color: rgba(31, 71, 180, 0.674);color:white;padding-left: 100px;">Question 3: What are the benefits of debt consolidation?</div>
+                <div class="accordion-content"style="background-color: rgb(220, 235, 249);padding-left: 100px;">
+                    <p>Debt consolidation involves combining multiple debts into a single loan with a lower interest rate. This can simplify repayment, reduce monthly payments, and potentially save money on interest over time.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+    <!-- Similar sections for other categories: Investing & Wealth Management, Loans & Debt Management, Retirement & Pension Planning -->
+    
+
+    <script src="resources_script.js"></script>
 </body>
 </html>

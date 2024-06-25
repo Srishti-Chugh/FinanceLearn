@@ -7,16 +7,32 @@
     <link rel="stylesheet" href="review_styles.css">
 </head>
 <body>
+    <header class="header">
+        <!--<button class="menu-button" onclick="openNav()">☰</button>-->
+        <h1 style="text-align: left;padding-left: 50px;">Finance Compass</h1>
+        <nav class="header-nav">
+            <ul class="header-nav-list">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="resources.html">Learning Resources</a></li>
+            </ul>
+        </nav>
+    </header>
     <div class="container">
-        <h1>Leave a Review</h1>
-        <form id="reviewForm">
+        <h2>Welcome to Our Community Reviews Page!</h2>
+        <ul class="bullet-points">
+            <li>This is where you, our valued users, share your experiences, insights, and feedback on various financial products, services, and resources.</li>
+            <li>Whether you've explored investment schemes, insurance plans, loan products, or have feedback about our platform, your voice matters here.</li>
+            
+        </ul>
+        <form id="reviewForm" style="background-color: rgba(122, 190, 246, 0.361);">
             <label for="category">Review Category:</label>
             <select id="category" name="category" required>
-                <option value="Scheme Type">Scheme Type</option>
-                <option value="Financial Goal">Financial Goal</option>
-                <option value="User Experience">User Experience</option>
-                <option value="Performance and Returns">Performance and Returns</option>
+                <option value="Investment Schemes">Investment Schemes</option>
+                <option value="Insurance Plans">Insurance Plans</option>
+                <option value="Loan Products">Loan Products</option>
+                <option value="Savings and Retirement Plans">Savings and Retirement Plans</option>
                 <option value="Educational Resources and Learning Experience">Educational Resources and Learning Experience</option>
+                <option value="General Feedback">General Feedback</option>
             </select>
 
             <label for="review">Review:</label>
@@ -24,12 +40,13 @@
 
             <button type="submit">Submit Review</button>
         </form>
+        <div id="sentimentDisplay"></div> <!-- Make sure this exists -->
         <div id="reviewsContainer">
             <h2>All Reviews</h2>
             <ul id="reviewsList"></ul>
         </div>
     </div>
-    <div id="sentimentDisplay"></div> <!-- Make sure this exists -->
+    
     <div id="reviewsList"></div>
     <script src="review_script.js"></script>
 </body>

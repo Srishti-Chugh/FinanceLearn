@@ -7,52 +7,60 @@
     <title>Insurance Webpage</title>
 </head>
 <body>
-    <header>
+    <header class="site-header">
         <button id="menuButton" onclick="toggleNav()">&#9776;</button>
-        <h1>Insurance Company</h1>
+        <h1>Finance Learn</h1>
+        <nav class="header-nav">
+            <ul class="header-nav-list">
+                <li><a href="resources.html">Learning Resources</a></li>
+                <li><a href="reviews.html">Community</a></li>
+            </ul>
+        </nav>
     </header>
 
     <div id="sideNav" class="side-nav">
         <a href="#" class="closebtn" id="closeBtn">&times;</a>
-        <a href="#">Home</a>
-        <a href="#">Services</a>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="monthly_budget.html">Budget</a>
+        <a href="invest.html">Investment</a>
+        <a href="loan.html">Loans</a>
+        <a href="insurance.html">Insurance</a>
     </div>
 
     <section class="hero">
-        <div class="card leftmost"><img src="image1.jpg" alt="Image 1"></div>
-        <div class="card square1"><img src="image2.jpg" alt="Image 2"></div>
-        <div class="card square2"><img src="image3.jpg" alt="Image 3"></div>
-        <div class="card square3"><img src="image4.jpg" alt="Image 4"></div>
+        <div class="card leftmost"><img src="insurance1.jpg" alt="Image 1"></div>
+        <div class="card square1"><img src="insurance2.jpg" alt="Image 2"></div>
+        <div class="card square2"><img src="insurance3.jpg" alt="Image 3"></div>
+        <div class="card square3"><img src="insurance4.png" alt="Image 4"></div>
         <div class="card text">
             <h2>Securing Your Future, Protecting Your Present</h2>
             <p>In today's uncertain world, having the right insurance coverage is essential for safeguarding your assets, your loved ones, and your peace of mind. Our insurance solutions offer comprehensive protection and peace of mind.</p>
             <button>Get a Quote</button>
         </div>
-        <div class="card rightmost"><img src="image5.jpg" alt="Image 5"></div>
+        <div class="card rightmost"><img src="insurance5.png" alt="Image 5"></div>
     </section>
 
     <section class="importance">
         <div class="importance-item">
-            <img src="logo1.png" alt="Logo 1" class="importance-logo">
+            
             <p>Insurance provides financial security in case of unexpected events and emergencies, protecting your assets and loved ones.</p>
         </div>
         <div class="importance-item">
-            <img src="logo2.png" alt="Logo 2" class="importance-logo">
+            
             <p>It ensures continuity of income and helps maintain your lifestyle even when faced with unforeseen circumstances.</p>
         </div>
         <div class="importance-item">
-            <img src="logo3.png" alt="Logo 3" class="importance-logo">
+            
             <p>Insurance can cover medical expenses, reducing the financial burden of healthcare costs on you and your family.</p>
         </div>
         <div class="importance-item">
-            <img src="logo4.png" alt="Logo 4" class="importance-logo">
+            
             <p>It also helps in wealth preservation and can be a part of your long-term financial planning strategy.</p>
         </div>
     </section>
 
-    <div class="accordion">
+    <h2 style="padding-left: 50px;">Investment Suggestion</h2>
+    <div class="accordion" style="padding-bottom: 0 px;">
         <div class="accordion-item">
             <div class="accordion-header">Personal Information</div>
             <div class="accordion-content">
@@ -99,37 +107,32 @@
             <div class="accordion-content">
                 <label for="income">Annual Income:</label>
                 <select id="income" name="income" required>
-                    <option value="below_20k">Below $20,000</option>
-                    <option value="20k_50k">$20,000 - $50,000</option>
-                    <option value="50k_100k">$50,000 - $100,000</option>
-                    <option value="above_100k">Above $100,000</option>
+                    <option value="below_20k">Below Rs.20,000</option>
+                    <option value="20k_50k">Rs.20,000 - Rs.50,000</option>
+                    <option value="50k_100k">Rs.50,000 - Rs.100,000</option>
+                    <option value="above_100k">Above Rs.100,000</option>
                 </select><br>
 
                 <label for="budget">Monthly Budget for Insurance Premiums:</label>
                 <select id="budget" name="budget" required>
-                    <option value="below_100">Below $100</option>
-                    <option value="100_200">$100 - $200</option>
-                    <option value="200_500">$200 - $500</option>
-                    <option value="above_500">Above $500</option>
+                    <option value="below_100">Below Rs.100</option>
+                    <option value="100_200">Rs.100 - Rs.200</option>
+                    <option value="200_500">Rs.200 - Rs.500</option>
+                    <option value="above_500">Above Rs.500</option>
                 </select><br>
             </div>
         </div>
-        <div class="accordion-item">
-            <div class="accordion-header">Lifestyle Information</div>
-            <div class="accordion-content">
-                <!-- Lifestyle information fields -->
-            </div>
-        </div>
+        
         <div class="accordion-item">
             <div class="accordion-header">Premium Calculator</div>
             <div class="accordion-content">
                 <label for="coverageAmount">Coverage Amount:</label>
                 <select id="coverageAmount" name="coverageAmount" required>
-                    <option value="10000">$10,000</option>
-                    <option value="50000">$50,000</option>
-                    <option value="100000">$100,000</option>
-                    <option value="500000">$500,000</option>
-                    <option value="1000000">$1,000,000</option>
+                    <option value="10000">Rs.10,000</option>
+                    <option value="50000">Rs.50,000</option>
+                    <option value="100000">Rs.100,000</option>
+                    <option value="500000">Rs.500,000</option>
+                    <option value="1000000">Rs.1,000,000</option>
                 </select><br>
 
                 <label for="policyTerm">Policy Term (in years):</label>
@@ -143,30 +146,36 @@
 
                 <label for="deductible">Deductible:</label>
                 <select id="deductible" name="deductible" required>
-                    <option value="0">$0</option>
-                    <option value="100">$100</option>
-                    <option value="500">$500</option>
-                    <option value="1000">$1,000</option>
-                    <option value="2000">$2,000</option>
+                    <option value="0">Rs.0</option>
+                    <option value="100">Rs.100</option>
+                    <option value="500">Rs.500</option>
+                    <option value="1000">Rs.1,000</option>
+                    <option value="2000">Rs.2,000</option>
                 </select><br>
             </div>
         </div>
+        <button id="submit-btn" style="margin-left: 50px;">Submit</button>
     </div>
+    
+    <div id="advice-section" style="display: none;padding-left: 100px; padding-bottom: 50px; width:600px" >
+        <!-- Investment advice and premium calculation will be displayed here -->
+    </div>
+    <h2 style="padding-left: 50px;">Some Government Insurancce Schemes</h2>
     <section class="insurance-cards">
         <div class="insurance-card" id="healthInsuranceCard">
-            <img src="health_insurance_logo.png" alt="Health Insurance">
+            <img src="health.png" alt="Health Insurance">
             <p>Health Insurance</p>
         </div>
         <div class="insurance-card" id="lifeInsuranceCard">
-            <img src="life_insurance_logo.png" alt="Life Insurance">
+            <img src="life.png" alt="Life Insurance">
             <p>Life Insurance</p>
         </div>
         <div class="insurance-card" id="cropAgricultureInsuranceCard">
-            <img src="home_insurance_logo.png" alt="Crop and Agriculture Insurance">
+            <img src="agri.png" alt="Crop and Agriculture Insurance">
             <p>Crop and Agriculture Insurance</p>
         </div>
         <div class="insurance-card" id="naturalDisasterInsuranceCard">
-            <img src="travel_insurance_logo.png" alt="Natural Disaster Insurance">
+            <img src="disaster.png" alt="Natural Disaster Insurance">
             <p>Natural Disaster Insurance</p>
         </div>
     </section>

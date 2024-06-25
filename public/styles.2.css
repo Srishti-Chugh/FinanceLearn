@@ -3,11 +3,11 @@ body {
     margin: 0;
     font-family: 'Arial', sans-serif;
     background-color: #ffffff;
-    color: #022243;
+    color: navy;
 }
 
 header {
-    background-color: #022243;
+    background-color: navy;
     color: #fff;
     padding: 1em 0;
     position: fixed;
@@ -225,7 +225,7 @@ header nav {
 }
 
 footer {
-    background-color: #333;
+    background-color: navy;
     color: #fff;
     text-align: center;
     padding: 1em 0;
