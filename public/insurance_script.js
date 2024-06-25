@@ -185,9 +185,9 @@ document.getElementById("submit-btn").addEventListener("click", function() {
   var coverage = document.getElementById("coverage").value;
   var income = document.getElementById("income").value;
   var budget = document.getElementById("budget").value;
-  var coverageAmount = document.getElementById("coverageAmount").value;
-  var policyTerm = document.getElementById("policyTerm").value;
-  var deductible = document.getElementById("deductible").value;
+  var coverageAmount = parseFloat(document.getElementById("coverageAmount").value);
+  var policyTerm = parseFloat(document.getElementById("policyTerm").value);
+  var deductible = parseFloat(document.getElementById("deductible").value);
   
   // Perform calculations based on user input
   var premium = calculatePremium(income, budget, coverageAmount, policyTerm, deductible);
@@ -200,22 +200,74 @@ document.getElementById("submit-btn").addEventListener("click", function() {
 
 // Define functions for premium calculation and investment advice generation
 function calculatePremium(income, budget, coverageAmount, policyTerm, deductible) {
-  // Assuming a very basic premium calculation for demonstration purposes
-  var premium = 0;
-  if (income === "below_20k") {
-      premium = 100;
-  } else if (income === "20k_50k") {
-      premium = 200;
-  } else if (income === "50k_100k") {
-      premium = 300;
-  } else if (income === "above_100k") {
-      premium = 400;
-  }
-  
-  // Further adjust the premium based on coverage amount, policy term, and deductible
-  // This is a simplified example and should be replaced with actual logic
-  
-  return premium;
+    // Assuming a very basic premium calculation for demonstration purposes
+    let premium = 0;
+    if (income === "below_20k") {
+        premium = 100;
+    } else if (income === "20k_50k") {
+        premium = 200;
+    } else if (income === "50k_100k") {
+        premium = 300;
+    } else if (income === "above_100k") {
+        premium = 400;
+    }
+
+    // Adjust the premium based on coverage amount
+    if (coverageAmount === 10000) {
+        premium += 1000 * 0.1; // Adds Rs.100
+    } else if (coverageAmount === 50000) {
+        premium += 5000 * 0.1; // Adds Rs.500
+    } else if (coverageAmount === 100000) {
+        premium += 10000 * 0.1; // Adds Rs.1000
+    } else if (coverageAmount === 500000) {
+        premium += 50000 * 0.1; // Adds Rs.5000
+    } else if (coverageAmount === 1000000) {
+        premium += 100000 * 0.1; // Adds Rs.10000
+    }
+
+    // Adjust the premium based on policy term
+    if (policyTerm === 1) {
+        premium += 1 * 10; // Adds Rs.10
+    } else if (policyTerm === 5) {
+        premium += 5 * 10; // Adds Rs.50
+    } else if (policyTerm === 10) {
+        premium += 10 * 10; // Adds Rs.100
+    } else if (policyTerm === 20) {
+        premium += 20 * 10; // Adds Rs.200
+    } else if (policyTerm === 30) {
+        premium += 30 * 10; // Adds Rs.300
+    }
+
+    // Adjust the premium based on deductible
+    if (deductible === 0) {
+        premium -= 0; // No change
+    } else if (deductible === 100) {
+        premium -= 1 * 5; // Reduces Rs.5
+    } else if (deductible === 500) {
+        premium -= 5 * 5; // Reduces Rs.25
+    } else if (deductible === 1000) {
+        premium -= 10 * 5; // Reduces Rs.50
+    } else if (deductible === 2000) {
+        premium -= 20 * 5; // Reduces Rs.100
+    }
+
+    // Ensure the premium fits within the budget
+    let budgetLimit = 0;
+    if (budget === "below_100") {
+        budgetLimit = 100;
+    } else if (budget === "100_200") {
+        budgetLimit = 200;
+    } else if (budget === "200_500") {
+        budgetLimit = 500;
+    } else if (budget === "above_500") {
+        budgetLimit = Number.MAX_SAFE_INTEGER; // No upper limit
+    }
+
+    if (premium > budgetLimit) {
+        premium = budgetLimit;
+    }
+
+    return premium;
 }
 
 function generateAdvice(age, income, coverage) {
