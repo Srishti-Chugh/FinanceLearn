@@ -752,13 +752,42 @@
             var plannedExpenses = parseFloat($('#plannedExpenses').val()) || 0;
             var actualExpenses = parseFloat($('#totalExpenses').text()) || 0;
 
-            // Set widths of the bars
-            $('#plannedIncomeProgressBar').css('width', plannedIncome + 'px').text('Planned Income: $' + plannedIncome);
-            $('#actualIncomeProgressBar').css('width', actualIncome + 'px').text('Actual Income: $' + actualIncome);
+            // Define the maximum value for the progress bars
+            var maxValue = Math.max(plannedIncome, actualIncome, plannedExpenses, actualExpenses, 100); // Ensure a non-zero maximum
 
-            $('#plannedExpensesProgressBar').css('width', plannedExpenses + 'px').text('Planned Expenses: $' + plannedExpenses);
-            $('#actualExpensesProgressBar').css('width', actualExpenses + 'px').text('Actual Expenses: $' + actualExpenses);
+            // Calculate the percentages
+            var plannedIncomePercentage = (plannedIncome / maxValue) * 100;
+            var actualIncomePercentage = (actualIncome / maxValue) * 100;
+            var plannedExpensesPercentage = (plannedExpenses / maxValue) * 100;
+            var actualExpensesPercentage = (actualExpenses / maxValue) * 100;
+
+            // Set widths and styles of the bars
+            $('#plannedIncomeProgressBar').css({
+                'width': plannedIncomePercentage + '%',
+                'background-color': 'lightblue',
+                'color': 'darkblue'
+            }).text('Planned Income: Rs' + plannedIncome);
+
+            $('#actualIncomeProgressBar').css({
+                'width': actualIncomePercentage + '%',
+                'background-color': 'lightblue',
+                'color': 'darkblue'
+            }).text('Actual Income: Rs' + actualIncome);
+
+            $('#plannedExpensesProgressBar').css({
+                'width': plannedExpensesPercentage + '%',
+                'background-color': 'lightblue',
+                'color': 'darkblue'
+            }).text('Planned Expenses: Rs' + plannedExpenses);
+
+            $('#actualExpensesProgressBar').css({
+                'width': actualExpensesPercentage + '%',
+                'background-color': 'lightblue',
+                'color': 'darkblue'
+            }).text('Actual Expenses: Rs' + actualExpenses);
         }
+
+
 
 
 
